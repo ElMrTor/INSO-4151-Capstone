@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Girrifa",
+    "slug": "Girrifa",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Girrifa"
+}
