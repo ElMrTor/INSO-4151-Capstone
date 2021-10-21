@@ -1,0 +1,16 @@
+For Windows:
+
+$env:FLASK_APP = "src/main.py"
+flask run
+
+
+For Linux:
+export FLASK_APP=src/main.py
+flask run
+
+
+######################################################################
+- Create a new virtual environment with python -m venv virtual_env_name
+- Activate virtual environment, steps may change depending on computer OS
+- Install python dependencies on virtual environment with pip (if cwd is root of project):
+    pip install -r requirements.txt
