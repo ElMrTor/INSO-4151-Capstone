@@ -7,8 +7,8 @@ export default function Explore() {
     const [search, setSearch] = useState('');
   return (
     <View style={styles.container}>
-      <Text style={{fontSize:36, fontWeight:'bold', color:'white'}}>Discover</Text>
-      <Text style={{color:'white', flexDirection:'row', justifyContent:'flex-start'}}>Explore the world of raffles!</Text>
+      <Text style={{fontSize:36, fontWeight:'bold', color:'white', marginRight:155, marginBottom:10, marginTop:20}}>Discover</Text>
+      <Text style={{fontSize:16, color:'white', marginRight:100, marginBottom:10}}>Explore the world of raffles!</Text>
 
       <SearchBar
         round
@@ -18,6 +18,7 @@ export default function Explore() {
         searchIcon={{size: 20, color:'white'}}
         onChangeText={(search) => setSearch(search)}
         placeholder="Search raffle"
+        placeholderTextColor="white"
         value={search}
       />
 
@@ -53,7 +54,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#28221E',
     alignItems: 'center',
-    justifyContent: 'center',
   },
 
   searchBarContainer: {
@@ -62,22 +62,21 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
     borderBottomColor: 'transparent',
     borderTopColor: 'transparent',
-    width:304,
+    width:315,
+    marginBottom:10,
   },
 
   row: {
-    flex: 1,
     flexDirection: "row",
     borderRadius: 18,
     alignItems: "center",
     justifyContent: "center",
-
   },
 
   column: {
     flexDirection: "column",
-    height: 150,
-    width: 150,
+    height: 180,
+    width: 160,
     backgroundColor: "white",
     borderRadius: 18,
     alignItems: "center",

@@ -49,7 +49,7 @@ export default function SignUp({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
-          placeholder="Birtday"
+          placeholder="Birthday"
           placeholderTextColor="#9A9A9A"
           onChangeText={(email) => setEmail(email)}
         />
