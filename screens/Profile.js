@@ -1,15 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
+import OpenApp from './../screens/OpenApp';
+
+export default function Profile({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   return (
     <View style={styles.container}>
       <Image
         style={{width:130, height:130}}
-        source={require('./assets/login.png')}
+        source={require('./../assets/logo.png')}
       />
       <Text style={{fontWeight: "bold", fontSize:20}}>@username</Text>
 
@@ -50,7 +53,7 @@ export default function App() {
 
       <TouchableOpacity
         style={styles.buttons}
-        onPress={() => Alert.alert('Simple Button pressed')}
+        onPress={() => navigation.navigate(OpenApp)}
         >
         <Text style={styles.buttonsTxt}>Sign Out</Text>
       </TouchableOpacity>

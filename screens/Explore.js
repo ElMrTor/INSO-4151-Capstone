@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
-export default function App() {
+export default function Explore() {
     const [search, setSearch] = useState('');
   return (
     <View style={styles.container}>

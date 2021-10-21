@@ -2,14 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 
-export default function App() {
+export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   return (
     <View style={styles.container}>
       <Image
-        style={{width:160, height:160, marginBottom:45}}
-        source={require('./assets/login.png')}
+        style={{width:120, height:120, marginBottom:45}}
+        source={require('./../assets/login.png')}
       />
 
       <Text style={{color:"#333333", fontWeight: "bold", marginBottom:5, fontSize: 36}}>Login</Text>

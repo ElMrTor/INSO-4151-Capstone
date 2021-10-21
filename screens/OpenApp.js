@@ -7,7 +7,7 @@ export default function App() {
     <View style={styles.container}>
       <Image
         style={{width: 300,height: 210,marginBottom:150}}
-        source={require('./assets/logo.png')}
+        source={require('./../assets/logo.png')}
       />
       <StatusBar style="auto" />
       <TouchableOpacity
