@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import OpenApp from './../screens/OpenApp';
 
 export default function Profile({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const pressHandlerGetStarted = () => {
+      navigation.navigate('Login');
+    }
+
   return (
     <View style={styles.container}>
       <Image
@@ -53,7 +57,7 @@ export default function Profile({ navigation }) {
 
       <TouchableOpacity
         style={styles.buttons}
-        onPress={() => navigation.navigate(OpenApp)}
+        onPress={pressHandlerGetStarted}
         >
         <Text style={styles.buttonsTxt}>Sign Out</Text>
       </TouchableOpacity>

@@ -1,16 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
-import MainContainer from './screens/MainContainer';
-import OpenApp from './screens/OpenApp';
-
+import Navigator from './routes/OpenAppStack';
 
 export default function App() {
 
-  return <MainContainer />;
+  return <Navigator />;
   
 }
+
 
 const styles = StyleSheet.create({
   container: {

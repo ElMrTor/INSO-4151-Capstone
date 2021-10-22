@@ -1,8 +1,13 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
-export default function App() {
+export default function OpenApp({ navigation }) {
+
+  const pressHandler = () => {
+    navigation.navigate('Login');
+  }
   return (
     <View style={styles.container}>
       <Image
@@ -12,13 +17,15 @@ export default function App() {
       <StatusBar style="auto" />
       <TouchableOpacity
         style={styles.start}
-        onPress={() => Alert.alert('Simple Button pressed')}
+        onPress={pressHandler}
         >
         <Text style={styles.buttonTxt}>GET STARTED</Text>
       </TouchableOpacity>
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

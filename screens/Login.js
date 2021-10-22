@@ -2,9 +2,18 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 
-export default function Login() {
+export default function Login({navigation}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const pressHandlerSignUp = () => {
+      navigation.navigate('SignUp');
+    }
+
+    const pressHandlerMainContainer = () => {
+      navigation.navigate('MainContainer');
+    }
+
   return (
     <View style={styles.container}>
       <Image
@@ -39,13 +48,15 @@ export default function Login() {
 
       <TouchableOpacity
         style={styles.loginBtn}
-        onPress={() => Alert.alert('Simple Button pressed')}
+        onPress={pressHandlerMainContainer}
         >
         <Text style={{color: 'white',fontWeight:"bold", fontSize:20}}>LOGIN</Text>
       </TouchableOpacity>
 
       <Text style={{color:"#9A9A9A",fontWeight: "bold"}}>Don’t have an account?
-      <TouchableOpacity>
+      <TouchableOpacity
+              onPress={pressHandlerSignUp}
+              >
         <Text style={{color:"#DA772C",fontWeight: "bold"}}> Register</Text>
       </TouchableOpacity>
       </Text>
