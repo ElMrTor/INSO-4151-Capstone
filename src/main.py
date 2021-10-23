@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, url_for,redirect,render_template
 app = Flask(__name__)
 
 
@@ -7,11 +7,9 @@ POST = 'POST'
 PUT = 'PUT'
 DELETE = 'DELETE'
 
-
-@app.route("/")
-#@app.route('/home', methods=[GET])
+@app.route('/home', methods=[GET])
 def home():
-    return "<h1> Hello <h1>"
+    return 'Not implemented'
 
 @app.route('/users', methods=[GET])
 def users():
@@ -49,6 +47,30 @@ def reviews():
 @app.route('/reviews/<int:review_id>', methods=[GET, PUT, DELETE])
 def reviews_by_id(review_id):
     return 'Not implemented'
+
+from psycopg2 import connect
+
+'Status Codes'
+OK = 200
+CREATED = 201
+ACCEPTED = 202
+NOT_FOUND = 404
+BAD_REQUEST = 400
+
+DATABASE_CONFIG = {
+    'host' : 'localhost',
+    'user' : 'postgres',
+    'password' : 'inso',
+    'database' : 'Capstone_Inso'
+}
+
+def connect_db() -> connect:
+    try:
+        connection = connect(**DATABASE_CONFIG)
+    except Exception as e:
+        print(f'Connection to the database failed with error {e}')
+    return connection
+
 
 if __name__ == "__main__":
     app.run()
