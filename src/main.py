@@ -8,10 +8,10 @@ PUT = 'PUT'
 DELETE = 'DELETE'
 
 
-
-@app.route('/home', methods=[GET])
+@app.route("/")
+#@app.route('/home', methods=[GET])
 def home():
-    return 'Not implemented'
+    return "<h1> Hello <h1>"
 
 @app.route('/users', methods=[GET])
 def users():
@@ -50,3 +50,5 @@ def reviews():
 def reviews_by_id(review_id):
     return 'Not implemented'
 
+if __name__ == "__main__":
+    app.run()
