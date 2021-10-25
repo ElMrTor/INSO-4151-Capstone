@@ -20,3 +20,7 @@ def connect_db() -> connect:
     except Exception as e:
         print(f'Connection to the database failed with error {e}')
     return connection
+
+
+
+
