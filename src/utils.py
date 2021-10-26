@@ -15,8 +15,17 @@ DATABASE_CONFIG = {
 }
 
 def connect_db() -> connect:
+    global DATABASE_CONFIG
     try:
-        connection = connect(**DATABASE_CONFIG)
+        try:
+            connection = connect(**DATABASE_CONFIG)
+        except:            
+            DATABASE_CONFIG['database'] = 'capstone_inso'
+            connection = connect(**DATABASE_CONFIG)
     except Exception as e:
         print(f'Connection to the database failed with error {e}')
     return connection
+
+
+
+

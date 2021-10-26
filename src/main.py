@@ -1,4 +1,6 @@
 from flask import Flask, jsonify, request, url_for,redirect,render_template
+
+from reviews.reviews_manager import ReviewManager
 app = Flask(__name__)
 
 
@@ -42,11 +44,21 @@ def raffle_stats_by_id(raffle_id):
 
 @app.route('/reviews', methods=[GET, POST])
 def reviews():
+    if request.method == GET:
+        return ReviewManager().get_all()
+    elif request.method == POST:
+        return ReviewManager().add(tuple(request.json.values()))
     return 'Not implemented'
 
 @app.route('/reviews/<int:review_id>', methods=[GET, PUT, DELETE])
 def reviews_by_id(review_id):
+    if request.method == GET:
+        return ReviewManager().get(review_id)
+    elif request.method == PUT:
+        return ReviewManager().edit(review_id, tuple(request.json.values()))
+    elif request.method == DELETE:
+        return ReviewManager().delete(review_id)
     return 'Not implemented'
     
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
