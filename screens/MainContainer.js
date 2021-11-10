@@ -10,15 +10,19 @@ import Explore from './../screens/Explore';
 import Profile from './../screens/Profile';
 import SignUp from './../screens/SignUp';
 import OpenApp from './../screens/OpenApp';
-
-
+import ReportBug from './../screens/ReportBug';
+import Settings from './../screens/Settings';
+import MyReviews from './../screens/MyReviews';
 
 //Screen names
 const homeName = "Home";
 const exploreName = "Explore";
 const addRaffleName = "Login";
 const profileName = "Profile";
-const openName = "OpenApp"
+const openName = "OpenApp";
+const bugName = "ReportBug";
+const settingsName = "Settings";
+const reviewName = "MyReviews";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -30,10 +34,10 @@ function MainContainer() {
 
   return (
     <NavigationContainer>
-    
+
       <Tab.Navigator
 
-      
+
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
           
@@ -68,13 +72,12 @@ function MainContainer() {
         
         >
 
-        <Tab.Screen name={homeName} component={Profile} />
+        <Tab.Screen name={homeName} component={Settings} />
         <Tab.Screen name={exploreName} component={Explore} />
         <Tab.Screen name={addRaffleName} component={SignUp} />
         <Tab.Screen name={profileName} component={Profile} />
 
       </Tab.Navigator>
-      
     </NavigationContainer>
   );
 }

@@ -5,6 +5,9 @@ import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import MainContainer from '../screens/MainContainer';
 import Profile from '../screens/Profile';
+import ReportBug from '../screens/ReportBug';
+import MyReviews from '../screens/MyReviews';
+import Settings from '../screens/Settings';
 
 
 const screens = {
@@ -19,7 +22,6 @@ const screens = {
         navigationOptions: {
             headerShown: false
         }
-        
     },
     SignUp: {
         screen: SignUp,
@@ -35,6 +37,24 @@ const screens = {
     },
     Profile: {
         screen: Profile,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    ReportBug: {
+        screen: ReportBug,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    Settings: {
+        screen: Settings,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    MyReviews: {
+        screen: MyReviews,
         navigationOptions: {
             headerShown: false
         }
