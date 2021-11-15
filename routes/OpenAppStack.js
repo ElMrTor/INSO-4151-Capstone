@@ -4,7 +4,7 @@ import OpenApp from '../screens/OpenApp';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import MainContainer from '../screens/MainContainer';
-import Profile from '../screens/Profile';
+import Home from '../screens/Home';
 
 
 const screens = {
@@ -33,8 +33,8 @@ const screens = {
             headerShown: false
         }
     },
-    Profile: {
-        screen: Profile,
+    Home: {
+        screen: Home,
         navigationOptions: {
             headerShown: false
         }

@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createStackNavigator} from '@react-navigation/stack';
 
 // Screens
-import Login from './../screens/Login';
+import Home from './../screens/Home';
 import Explore from './../screens/Explore';
 import Profile from './../screens/Profile';
 import SignUp from './../screens/SignUp';
@@ -68,7 +68,7 @@ function MainContainer() {
         
         >
 
-        <Tab.Screen name={homeName} component={Profile} />
+        <Tab.Screen name={homeName} component={Home} />
         <Tab.Screen name={exploreName} component={Explore} />
         <Tab.Screen name={addRaffleName} component={SignUp} />
         <Tab.Screen name={profileName} component={Profile} />

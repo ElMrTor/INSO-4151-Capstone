@@ -6,6 +6,7 @@ import { SearchBar } from 'react-native-elements';
 export default function Explore() {
     const [search, setSearch] = useState('');
   return (
+    
     <View style={styles.container}>
       <Text style={{fontSize:36, fontWeight:'bold', color:'white', marginRight:155, marginBottom:10, marginTop:20}}>Discover</Text>
       <Text style={{fontSize:16, color:'white', marginRight:100, marginBottom:10}}>Explore the world of raffles!</Text>
