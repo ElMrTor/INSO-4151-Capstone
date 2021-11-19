@@ -57,8 +57,7 @@ function Item({user_name, user_image, feed_image, feed_description, raffle_curre
                     </View>
                     <View style={styles.headerRight}>
                     <View style={{alignItems: 'flex-end', marginRight: 5}}><Text style={styles.price}> $10 </Text></View>
-
-                    <FontAwesome name="ellipsis-h" style={styles.moreIcon}/>
+                    <TouchableOpacity><FontAwesome name="ellipsis-h" style={styles.moreIcon}/></TouchableOpacity>
                     </View>
                 </View>
                         <Image 
@@ -80,9 +79,9 @@ function Item({user_name, user_image, feed_image, feed_description, raffle_curre
                                 <Text style={styles.raffleCount}>{raffle_current} / {raffle_total}</Text>
                             </View> 
                                 <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                                    <FontAwesome name="plus-circle" color="orange" size={25}/>
+                                    <TouchableOpacity><FontAwesome name="plus-circle" color="orange" size={25}/></TouchableOpacity>
                                     <Text style={{ marginLeft: 2, marginRight: 2, fontSize: 20, fontWeight: 'bold'}}> 0 </Text>
-                                    <FontAwesome name="minus-circle" color="orange" size={25}/>
+                                    <TouchableOpacity><FontAwesome name="minus-circle" color="orange" size={25}/></TouchableOpacity>
                                 </View>
                                 <TouchableOpacity 
                                     style={styles.button}>
@@ -154,7 +153,8 @@ const styles = StyleSheet.create({
         fontSize: 12,
         textAlign: 'center',
         width: 60,
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
+        marginBottom: 5
     },
     price: {
         overflow: 'hidden',

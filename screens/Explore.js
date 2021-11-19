@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
 
   column: {
     flexDirection: "column",
-    height: 180,
-    width: 160,
+    height: 200,
+    width: 180,
     backgroundColor: "white",
     borderRadius: 18,
     alignItems: "center",
     justifyContent: "center",
-    margin: 10,
+    margin: 10
   },
 });
