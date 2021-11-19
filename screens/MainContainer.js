@@ -10,19 +10,34 @@ import Explore from './../screens/Explore';
 import Profile from './../screens/Profile';
 import SignUp from './../screens/SignUp';
 import OpenApp from './../screens/OpenApp';
+import ReportBug from './../screens/ReportBug';
+import Settings from './../screens/Settings';
+import MyReviews from './../screens/MyReviews';
 
-
+// import ProfileAppStack from './../routes/ProfileAppStack';
 
 //Screen names
 const homeName = "Home";
 const exploreName = "Explore";
 const addRaffleName = "Login";
 const profileName = "Profile";
-const openName = "OpenApp"
+const bugName = "ReportBug";
+const settingsName = "Settings";
+const reviewName = "MyReviews";
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+const ProfileStack = createStackNavigator();
 
+function ProfileStackScreen() {
+  return(
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name={profileName} component={Profile}/>
+      <ProfileStack.Screen name={reviewName} component={MyReviews}/>
+      <ProfileStack.Screen name={bugName} component={ReportBug}/>
+      <ProfileStack.Screen name={settingsName} component={Settings}/>
+    </ProfileStack.Navigator>
+  )
+}
 
 function MainContainer() {
 
@@ -30,10 +45,10 @@ function MainContainer() {
 
   return (
     <NavigationContainer>
-    
+
       <Tab.Navigator
 
-      
+
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
           
@@ -71,10 +86,9 @@ function MainContainer() {
         <Tab.Screen name={homeName} component={Home} />
         <Tab.Screen name={exploreName} component={Explore} />
         <Tab.Screen name={addRaffleName} component={SignUp} />
-        <Tab.Screen name={profileName} component={Profile} />
+        <Tab.Screen name={profileName} component={ProfileStackScreen} />
 
       </Tab.Navigator>
-      
     </NavigationContainer>
   );
 }

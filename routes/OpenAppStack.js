@@ -4,11 +4,16 @@ import OpenApp from '../screens/OpenApp';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import MainContainer from '../screens/MainContainer';
+import Profile from '../screens/Profile';
+import ReportBug from '../screens/ReportBug';
+import MyReviews from '../screens/MyReviews';
+import Settings from '../screens/Settings';
 import Home from '../screens/Home';
 
 
+
 const screens = {
-    GetStarted: {
+    OpenApp: {
         screen: OpenApp,
         navigationOptions: {
             headerShown: false
@@ -19,7 +24,6 @@ const screens = {
         navigationOptions: {
             headerShown: false
         }
-        
     },
     SignUp: {
         screen: SignUp,
@@ -33,12 +37,6 @@ const screens = {
             headerShown: false
         }
     },
-    Home: {
-        screen: Home,
-        navigationOptions: {
-            headerShown: false
-        }
-    }
 }
 
 const OpenAppStack = createStackNavigator(screens);
