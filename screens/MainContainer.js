@@ -9,12 +9,9 @@ import Home from './../screens/Home';
 import Explore from './../screens/Explore';
 import Profile from './../screens/Profile';
 import SignUp from './../screens/SignUp';
-import OpenApp from './../screens/OpenApp';
 import ReportBug from './../screens/ReportBug';
 import Settings from './../screens/Settings';
 import MyReviews from './../screens/MyReviews';
-
-// import ProfileAppStack from './../routes/ProfileAppStack';
 
 //Screen names
 const homeName = "Home";
@@ -40,15 +37,9 @@ function ProfileStackScreen() {
 }
 
 function MainContainer() {
-
-  
-
   return (
     <NavigationContainer>
-
       <Tab.Navigator
-
-
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
           
@@ -80,7 +71,6 @@ function MainContainer() {
           style: { padding: 10, height: 70},
           showLabel: false,
         }}
-        
         >
 
         <Tab.Screen name={homeName} component={Home} />
