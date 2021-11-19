@@ -1,47 +1,72 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function MyReviews({ navigation }){
+const DATA = [
+    {
+        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        score: 4.9
+    },
+    {
+        review_description: 'Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        score: 5.0
+    },
+    {
+        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        score: 4.5
+    },
+    {
+        review_description: 'Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        score: 4.0
+    },
+    {
+        review_description: 'Suspendisse tristique mauris sit amet interdum volutpat.',
+        score: 5.0
+    },
+    {
+        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        score: 4.2
+    },
+]
+
+function Item({review_description, score}){
     return (
-        <View style={styles.container}>
-          <Image
-            style={styles.img}
-            source={require('./../assets/login.png')}
-          />
-
-          <Text style={{position: 'relative', left: 75, top: -100, fontWeight:'bold', color:'#FFFFFF', fontSize:36, marginBottom: 10}}> My Reviews </Text>
-          <Text style={{position: 'relative', left: 110, top: -105, fontWeight:'bold', color:'#FFFFFF', fontSize:18, marginBottom: 10}}> Score: 4.9/5.0 </Text>
-
-          <View style={{position: 'relative', top: 80}}>
-              <View style={styles.row}>
-                  <Text> Review 1 </Text>
-                  <Text style ={{color: '#9A9A9A'}}> Score: 4.9/5.0 </Text>
+            <View>
+              <View style={{position: 'relative'}}>
+                  <View style={styles.row}>
+                      <Text style={{flex:1}}>{review_description} </Text>
+                      <Text style ={{color: '#9A9A9A'}}> Score: {score}/5.0 </Text>
+                  </View>
               </View>
+            </View>
+          );
+}
 
-              <View style={styles.row}>
-                 <Text> Review 2 </Text>
-                 <Text style ={{color: '#9A9A9A'}}> Score: 5.0/5.0 </Text>
-              </View>
+export default function MyReviews(){
+    return (
+            <View style={styles.container}>
+                <View style={{height:150}}>
+                    <Image
+                       style={styles.img}
+                       source={require('./../assets/login.png')}
+                    />
 
-              <View style={styles.row}>
-                 <Text> Review 3 </Text>
-                 <Text style ={{color: '#9A9A9A'}}> Score: 4.5/5.0 </Text>
-              </View>
+                   <Text style={{position: 'relative', left: 75, top: -100, fontWeight:'bold', color:'#FFFFFF', fontSize:36}}> My Reviews </Text>
+                   <Text style={{position: 'relative', left: 152, top: -100, fontWeight:'bold', color:'#FFFFFF', fontSize:18}}> Score: 4.9/5.0 </Text>
+                </View>
 
-              <View style={styles.row}>
-                 <Text> Review 4 </Text>
-                 <Text style ={{color: '#9A9A9A'}}> Score: 5.0/5.0 </Text>
-              </View>
-
-              <View style={styles.row}>
-                 <Text> Review 5 </Text>
-                 <Text style ={{color: '#9A9A9A'}}> Score: 5.0/5.0 </Text>
-              </View>
-          </View>
-        </View>
-      );
+                <FlatList
+                    data={DATA}
+                    renderItem={({ item }) =>
+                    <Item
+                    review_description={item.review_description}
+                    score={item.score}
+                    />}
+                    keyExtractor={item => item.id}
+                />
+            </View>
+        );
 }
 
 const styles = StyleSheet.create({
@@ -56,15 +81,13 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: 140,
     height: 140,
-    left: -100,
-    top: 0,
+    left: -70,
   },
 
   row: {
-    top: -150,
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    height: 41,
     width: 338,
     backgroundColor: "white",
     borderRadius: 13,
