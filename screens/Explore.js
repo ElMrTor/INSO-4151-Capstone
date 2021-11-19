@@ -1,16 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { SearchBar } from 'react-native-elements';
+import { ScrollView } from 'react-native-gesture-handler';
+import MiniCard from '../components/MiniCard';
+
+
 
 export default function Explore() {
     const [search, setSearch] = useState('');
   return (
-    
-    <View style={styles.container}>
-      <Text style={{fontSize:36, fontWeight:'bold', color:'white', marginRight:155, marginBottom:10, marginTop:20}}>Discover</Text>
-      <Text style={{fontSize:16, color:'white', marginRight:100, marginBottom:10}}>Explore the world of raffles!</Text>
 
+    <View style={styles.container}>
+          <ScrollView>
+      <View style={styles.header}>
+      <Text style={{fontSize:36, fontWeight:'bold', color:'white',
+       marginBottom:3, marginTop:20}}>Discover</Text>
+      <Text style={{fontSize:14, color:'#A9A9A9', marginRight:50, marginBottom:7, fontWeight:'bold'}}>
+        Explore the world of raffles!</Text>
+      </View>
+     
+      <StatusBar style="auto" />
+
+      <View style={styles.content}>
       <SearchBar
         round
         leftIconContainerStyle={{width:30, height:30, backgroundColor:'#DA772C', borderRadius:100}}
@@ -22,31 +34,10 @@ export default function Explore() {
         placeholderTextColor="white"
         value={search}
       />
-
-      <StatusBar style="auto" />
-
-      <View>
-        <View style={styles.row}>
-            <View style={styles.column}>
-                <Text> Raffle 1 </Text>
+            <MiniCard />
             </View>
-            <View style={styles.column}>
-                <Text> Raffle 2 </Text>
-            </View>
+            </ScrollView>
         </View>
-
-        <View style={styles.row}>
-            <View style={styles.column}>
-                <Text> Raffle 3 </Text>
-            </View>
-
-            <View style={styles.column}>
-                <Text> Raffle 4 </Text>
-            </View>
-        </View>
-      </View>
-
-    </View>
   );
 }
 
@@ -54,7 +45,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#28221E',
-    alignItems: 'center',
+  },
+
+  header: {
+    alignItems: 'flex-start',
+    marginLeft: 30
+  },
+
+  content: {
+    alignItems: 'center'
   },
 
   searchBarContainer: {
@@ -63,25 +62,6 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
     borderBottomColor: 'transparent',
     borderTopColor: 'transparent',
-    width:315,
-    marginBottom:10,
-  },
-
-  row: {
-    flexDirection: "row",
-    borderRadius: 18,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  column: {
-    flexDirection: "column",
-    height: 200,
-    width: 180,
-    backgroundColor: "white",
-    borderRadius: 18,
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 10
+    width: 390,
   },
 });

@@ -28,10 +28,10 @@ const ProfileStack = createStackNavigator();
 function ProfileStackScreen() {
   return(
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name={profileName} component={Profile}/>
-      <ProfileStack.Screen name={reviewName} component={MyReviews}/>
-      <ProfileStack.Screen name={bugName} component={ReportBug}/>
-      <ProfileStack.Screen name={settingsName} component={Settings}/>
+      <ProfileStack.Screen name={profileName} component={Profile} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={reviewName} component={MyReviews} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={bugName} component={ReportBug} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={settingsName} component={Settings} options={{ headerShown: false }}/>
     </ProfileStack.Navigator>
   )
 }

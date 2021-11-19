@@ -62,7 +62,7 @@ function Item({user_name, user_image, feed_image, feed_description, raffle_curre
                 </View>
                         <Image 
                         style={styles.raffleImage}
-                        source={require ('./../assets/imagePlaystation.png')} />
+                        source={{uri: 'https://pesonyb2c.vteximg.com.br/arquivos/ids/211437-1000-1000/PS5_Dig_DS.jpg?v=637364739009770000'}}/>
                         
                         <Text style={{fontWeight:'bold', color: '#000',fontSize: 20, marginLeft: 8}}> 
                         Playstation 5</Text>
