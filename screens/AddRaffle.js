@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'reac
 import { NavigationContainer } from '@react-navigation/native';
 import ImagePicker from '../components/ImagePicker';
 
-export default function AddReview({ navigation }){
+export default function AddRaffle({ navigation }){
 
     return (
         <View style={styles.container}>
