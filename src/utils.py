@@ -1,5 +1,11 @@
 from psycopg2 import connect
 
+'Rest Methods'
+GET = 'GET'
+POST = 'POST'
+PUT = 'PUT'
+DELETE = 'DELETE'
+
 'Status Codes'
 OK = 200
 CREATED = 201

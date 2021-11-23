@@ -4,7 +4,7 @@ from flask import jsonify
 from utils import OK, ACCEPTED, BAD_REQUEST, CREATED, NOT_FOUND
 
 
-class User:
+class UserManager:
 
     def get_all(self):
         return jsonify(User=[vars(User(*rev)) for rev in UserDAO().get_all()]), OK
