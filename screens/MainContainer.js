@@ -12,19 +12,18 @@ import SignUp from './../screens/SignUp';
 import ReportBug from './../screens/ReportBug';
 import Settings from './../screens/Settings';
 import MyReviews from './../screens/MyReviews';
-import MyRaffles from './../screens/MyRaffles';
-
+import AddReview from './../screens/AddReview';
+import AddRaffle from './../screens/AddRaffle';
 
 //Screen names
 const homeName = "Home";
 const exploreName = "Explore";
-const addRaffleName = "Login";
+const addRaffleName = "AddRaffle";
 const profileName = "Profile";
 const bugName = "ReportBug";
 const settingsName = "Settings";
 const reviewName = "MyReviews";
-const raffles = "MyRaffles";
-
+const addReview = "AddReview";
 
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
@@ -80,7 +79,7 @@ function MainContainer() {
 
         <Tab.Screen name={homeName} component={Home} />
         <Tab.Screen name={exploreName} component={Explore} />
-        <Tab.Screen name={addRaffleName} component={SignUp} />
+        <Tab.Screen name={addRaffleName} component={AddRaffle} />
         <Tab.Screen name={profileName} component={ProfileStackScreen} />
 
       </Tab.Navigator>
