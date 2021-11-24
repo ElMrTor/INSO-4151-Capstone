@@ -8,6 +8,10 @@ export default function Profile({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const pressHandlerMyRaffles = () => {
+      navigation.navigate('MyRaffles');
+    }
+
     const pressHandlerReportBug = () => {
       navigation.navigate('ReportBug');
     }
@@ -35,7 +39,7 @@ export default function Profile({ navigation }) {
 
       <TouchableOpacity
         style={styles.buttons}
-        onPress={() => Alert.alert('Simple Button pressed')}
+        onPress={pressHandlerMyRaffles}
         >
         <Text style={styles.buttonsTxt}>Raffles</Text>
       </TouchableOpacity>

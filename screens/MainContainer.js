@@ -12,6 +12,8 @@ import SignUp from './../screens/SignUp';
 import ReportBug from './../screens/ReportBug';
 import Settings from './../screens/Settings';
 import MyReviews from './../screens/MyReviews';
+import MyRaffles from './../screens/MyRaffles';
+
 
 //Screen names
 const homeName = "Home";
@@ -21,6 +23,8 @@ const profileName = "Profile";
 const bugName = "ReportBug";
 const settingsName = "Settings";
 const reviewName = "MyReviews";
+const raffles = "MyRaffles";
+
 
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
@@ -29,6 +33,7 @@ function ProfileStackScreen() {
   return(
     <ProfileStack.Navigator>
       <ProfileStack.Screen name={profileName} component={Profile} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={raffles} component={MyRaffles} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={reviewName} component={MyReviews} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={bugName} component={ReportBug} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={settingsName} component={Settings} options={{ headerShown: false }}/>

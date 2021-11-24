@@ -45,6 +45,7 @@ function Item({review_description, score}){
 
 export default function MyReviews(){
     return (
+        
             <View style={styles.container}>
                 <View style={{height:150}}>
                     <Image
