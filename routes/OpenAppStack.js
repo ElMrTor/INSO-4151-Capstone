@@ -1,9 +1,9 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer, StackRouter } from 'react-navigation';
-import OpenApp from '../screens/OpenApp';
-import Login from '../screens/Login';
-import SignUp from '../screens/SignUp';
-import MainContainer from '../screens/MainContainer';
+import OpenApp from './../screens/OpenApp';
+import Login from './../screens/Login';
+import SignUp from './../screens/SignUp';
+import MainContainer from './../components/MainContainer';
 
 const screens = {
     OpenApp: {

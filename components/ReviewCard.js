@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import ReviewCard from '../components/ReviewCard';
 
 const DATA = [
     {
@@ -44,23 +43,17 @@ function Item({review_description, score}){
           );
 }
 
-export default function MyReviews(){
+export default function ReviewCard(){
     return (
-        
-            <View style={styles.container}>
-                <View style={{marginTop: 50}}>
-                  <View style={{height:150, alignItems: 'center', marginBottom: 50}}>
-                    <Image
-                       style={styles.img}
-                       source={require('./../assets/michael-jordan.jpeg')}
-                    />
-                   <Text style={{fontWeight:'bold', color:'#FFFFFF', fontSize:36, textAlign: 'center'}}> Username </Text>
-                   <Text style={{fontWeight:'bold', color:'#FFFFFF', fontSize:16, textAlign: 'center'}}> Score: 4.9/5.0 </Text>
-                   </View>
-               <ReviewCard/>
-              </View>
-
-            </View>
+                <FlatList
+                    data={DATA}
+                    renderItem={({ item }) =>
+                    <Item
+                    review_description={item.review_description}
+                    score={item.score}
+                    />}
+                    keyExtractor={item => item.id}
+                />
         );
 }
 
@@ -71,36 +64,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  img: {
-    position: 'relative',
-    width: 140,
-    height: 140,
-    left: -70,
-  },
-
+  
   row: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    width: 380,
+    width: 371,
     backgroundColor: "white",
     borderRadius: 13,
     padding: 10,
     justifyContent: "space-around",
     margin: 10,
   },
-  img: {
-    width: 100,
-    height: 100,
-    marginTop: 20,
-    borderRadius: 100,
-    borderWidth: 3,
-    borderColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
 
-  },
 
 });
-

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function Settings({ navigation }){
+export default function EditProfile({ navigation }){
     return (
         <View style={styles.container}>
           <Image

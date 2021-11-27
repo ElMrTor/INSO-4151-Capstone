@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import ReportBug from '../screens/ReportBug';
+import ReportBug from './ReportBug';
 
-export default function Profile({ navigation }) {
+export default function ProfileSettings({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,7 +22,7 @@ export default function Profile({ navigation }) {
 
    
     const pressHandlerSettings = () => {
-      navigation.navigate('Settings');
+      navigation.navigate('EditProfile');
     }
 
     const pressHandlerMyReviews = () => {
@@ -31,11 +31,13 @@ export default function Profile({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Image
-        style={{width:130, height:130}}
-        source={require('./../assets/logo.png')}
-      />
-      <Text style={{fontWeight: "bold", fontSize:20}}>@username</Text>
+     
+     <TouchableOpacity
+          style={styles.buttons}
+          onPress={pressHandlerSettings}
+          >
+          <Text style={styles.buttonsTxt}>Edit Profile</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.buttons}
@@ -64,14 +66,7 @@ export default function Profile({ navigation }) {
           >
           <Text style={styles.buttonsTxt}>Report Bug</Text>
       </TouchableOpacity>
-
-      <TouchableOpacity
-          style={styles.buttons}
-          onPress={pressHandlerSettings}
-          >
-          <Text style={styles.buttonsTxt}>Settings</Text>
-      </TouchableOpacity>
-
+      
       <TouchableOpacity
         style={styles.buttons}
         onPress={pressHandlerGetStarted}

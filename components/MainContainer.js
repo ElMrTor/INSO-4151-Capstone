@@ -7,23 +7,33 @@ import {createStackNavigator} from '@react-navigation/stack';
 // Screens
 import Home from './../screens/Home';
 import Explore from './../screens/Explore';
-import Profile from './../screens/Profile';
+import ProfileSettings from '../screens/ProfileSettings';
 import SignUp from './../screens/SignUp';
 import ReportBug from './../screens/ReportBug';
-import Settings from './../screens/Settings';
+import Settings from './../screens/EditProfile';
 import MyReviews from './../screens/MyReviews';
 import AddReview from './../screens/AddReview';
 import AddRaffle from './../screens/AddRaffle';
+import MyRaffles from './../screens/MyRaffles';
+import UserProfile from './../screens/UserProfile';
+
+
+// Components
+import ProfileHeader from './ProfileHeader';
+
 
 //Screen names
 const homeName = "Home";
 const exploreName = "Explore";
-const addRaffleName = "AddRaffle";
-const profileName = "Profile";
+const addRaffleName = "Add Raffle";
+const profileSettingsName = "ProfileSettings";
+const profileName = "UserProfile1";
+
 const bugName = "ReportBug";
-const settingsName = "Settings";
+const editProfileName = "EditProfile";
 const reviewName = "MyReviews";
 const addReview = "AddReview";
+const raffles = "MyRaffles";
 
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
@@ -31,11 +41,14 @@ const ProfileStack = createStackNavigator();
 function ProfileStackScreen() {
   return(
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name={profileName} component={Profile} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={profileName} component={UserProfile} options={{
+        headerTitle: () => <ProfileHeader/>
+      }}/>
+      <ProfileStack.Screen name={profileSettingsName} component={ProfileSettings} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={raffles} component={MyRaffles} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={reviewName} component={MyReviews} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={bugName} component={ReportBug} options={{ headerShown: false }}/>
-      <ProfileStack.Screen name={settingsName} component={Settings} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={editProfileName} component={Settings} options={{ headerShown: false }}/>
     </ProfileStack.Navigator>
   )
 }
@@ -77,10 +90,10 @@ function MainContainer() {
         }}
         >
 
-        <Tab.Screen name={homeName} component={Home} />
-        <Tab.Screen name={exploreName} component={Explore} />
+        <Tab.Screen name={homeName} component={Home} options={{ headerShown: false }}/>
+        <Tab.Screen name={exploreName} component={Explore} options={{ headerShown: false }}/>
         <Tab.Screen name={addRaffleName} component={AddRaffle} />
-        <Tab.Screen name={profileName} component={ProfileStackScreen} />
+        <Tab.Screen name={profileName} component={ProfileStackScreen} options={{ headerShown: false }} />
 
       </Tab.Navigator>
     </NavigationContainer>

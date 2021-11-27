@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 180,
         height: 'auto',
+        marginTop: 10
     },
     cardHeader: {
         flexDirection: 'row',

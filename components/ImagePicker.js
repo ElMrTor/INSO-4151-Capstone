@@ -25,7 +25,6 @@ export default function ImageUpload() {
     });
 
     console.log(result);
-
     if (!result.cancelled) {
       setImage(result.uri);
     }
@@ -33,10 +32,14 @@ export default function ImageUpload() {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          {image && <Image source={{ uri: image }} style={{ width: 150, height: 150, marginBottom: 8 }} />}
+
       <TouchableOpacity style={styles.button} onPress={pickImage} >
-        <Text style={{fontWeight: "bold", color: "#DA772C"}}> Pick an image from your Camera Roll </Text>
+     
+      <Text style={{fontWeight: "bold", color: "#DA772C"}}> Pick an image from your Camera Roll </Text>
+
       </ TouchableOpacity>
-      {image && <Image source={{ uri: image }} style={{ width: 150, height: 150 }} />}
+
     </View>
   );
 }

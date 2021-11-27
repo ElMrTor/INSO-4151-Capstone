@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Navigator from './routes/OpenAppStack';
 import Home from './screens/Home';
-import MainContainer from './screens/MainContainer';
+import MainContainer from './components/MainContainer';
 
 export default function App() {
 
@@ -16,7 +16,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#28221E',
     alignItems: 'center',
     justifyContent: 'center',
   },

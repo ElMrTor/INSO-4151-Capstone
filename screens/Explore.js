@@ -12,7 +12,7 @@ export default function Explore() {
   return (
 
     <View style={styles.container}>
-          <ScrollView>
+          <ScrollView vertical>
       <View style={styles.header}>
       <Text style={{fontSize:36, fontWeight:'bold', color:'white',
        marginBottom:3, marginTop:20}}>Discover</Text>
@@ -49,7 +49,9 @@ const styles = StyleSheet.create({
 
   header: {
     alignItems: 'flex-start',
-    marginLeft: 30
+    marginLeft: 30,
+    marginTop: 40
+
   },
 
   content: {

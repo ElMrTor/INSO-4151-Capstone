@@ -16,6 +16,7 @@ const style = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#28221E',
+        marginTop: 50
     },
 });
 

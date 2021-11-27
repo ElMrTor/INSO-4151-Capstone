@@ -8,9 +8,6 @@ export default function AddRaffle({ navigation }){
 
     return (
         <View style={styles.container}>
-
-          <Text style={{fontWeight:'bold', color:'black', fontSize:36, margin: 25}}> Add a Raffle </Text>
-
           <ImagePicker />
 
           <View style={styles.inputView}>
