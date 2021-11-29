@@ -12,6 +12,8 @@ CREATED = 201
 ACCEPTED = 202
 NOT_FOUND = 404
 BAD_REQUEST = 400
+NOT_ACCEPTABLE = 406
+SERVICE_UNAVAILABLE = 503
 
 DATABASE_CONFIG = {
     'host' : 'localhost',
@@ -20,7 +22,7 @@ DATABASE_CONFIG = {
     'database' : 'Capstone_Inso'
 }
 
-def connect_db() -> connect:
+def connect_db():
     global DATABASE_CONFIG
     try:
         try:
