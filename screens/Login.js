@@ -14,6 +14,10 @@ export default function Login({navigation}) {
       navigation.navigate('MainContainer');
     }
 
+    const pressHandlerForgotPassword = () => {
+      navigation.navigate('ForgotPassword');
+    }
+
   return (
     <View style={styles.container}>
       <Image
@@ -42,7 +46,9 @@ export default function Login({navigation}) {
           onChangeText={(password) => setPassword(password)}
         />
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity
+         onPress={pressHandlerForgotPassword}
+      >
         <Text style={{color:"#DA772C", fontWeight: "bold"}}>Forgot Password?</Text>
       </TouchableOpacity>
 

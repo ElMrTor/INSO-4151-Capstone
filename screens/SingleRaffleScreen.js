@@ -3,20 +3,20 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'reac
 
 import RaffleCard from '../components/RaffleCard';
 
-const Home = () => {
+const SingleRaffleScreen = () => {
 
     return(
-        <View style={styles.container}>
+        <View style={style.container}>
             <RaffleCard  />
         </View>
     );
 };
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#28221E',
     },
 });
 
-export default Home;
+export default SingleRaffleScreen;

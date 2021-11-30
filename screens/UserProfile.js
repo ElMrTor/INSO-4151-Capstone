@@ -16,7 +16,7 @@ export default class UserProfile extends Component{
             showForm: 0
         };
     }
-
+    
     render() {
         var form;
         if (this.state.showForm === 0) {

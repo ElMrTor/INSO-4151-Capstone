@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList} from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
 
 
 const DATA = [
@@ -44,8 +46,18 @@ const DATA = [
     },
 ]
 
+
+
 function Item({user_name, user_image, feed_image, feed_description, raffle_current, raffle_total, raffle_price, raffle_title})
 {
+
+    const navigation = useNavigation(); 
+
+    const pressHandlerUserProfile = () => {
+        navigation.navigate('UserProfile');
+      }  
+
+
     return (
         <View style={styles.card}>
                 <View style={styles.cardHeader}>
@@ -53,7 +65,9 @@ function Item({user_name, user_image, feed_image, feed_description, raffle_curre
                          <Image 
                              style={styles.userImage}
                              source={require ('./../assets/michael-jordan.jpeg')} />
-                             <Text style={styles.userName}>{user_name}</Text>
+                             <TouchableOpacity
+                             onPress={pressHandlerUserProfile}
+                             ><Text style={styles.userName}>{user_name}</Text></TouchableOpacity>
                     </View>
                     <View style={styles.headerRight}>
                     <View style={{alignItems: 'flex-end', marginRight: 5}}><Text style={styles.price}> $10 </Text></View>
@@ -94,6 +108,7 @@ function Item({user_name, user_image, feed_image, feed_description, raffle_curre
 }
 
 function RaffleCard() {
+
     return (
 
         <FlatList

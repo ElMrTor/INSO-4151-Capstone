@@ -20,6 +20,8 @@ import UserProfile from './../screens/UserProfile';
 
 // Components
 import ProfileHeader from './ProfileHeader';
+import ProfileAsUser from './ProfileAsUser';
+import HomeHeader from './HomeHeader';
 
 
 //Screen names
@@ -27,7 +29,7 @@ const homeName = "Home";
 const exploreName = "Explore";
 const addRaffleName = "Add Raffle";
 const profileSettingsName = "ProfileSettings";
-const profileName = "UserProfile1";
+const profileName = "UserProfile";
 
 const bugName = "ReportBug";
 const editProfileName = "EditProfile";
@@ -49,6 +51,15 @@ function ProfileStackScreen() {
       <ProfileStack.Screen name={reviewName} component={MyReviews} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={bugName} component={ReportBug} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={editProfileName} component={Settings} options={{ headerShown: false }}/>
+    </ProfileStack.Navigator>
+  )
+}
+
+function HomeStackScreen() {
+  return(
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name={homeName} component={Home} options={{ headerTitle: () => <HomeHeader/> }}/>
+      <ProfileStack.Screen name={profileName} component={UserProfile} options={{  headerTitle: () => <ProfileAsUser/> }}/>
     </ProfileStack.Navigator>
   )
 }
@@ -90,7 +101,7 @@ function MainContainer() {
         }}
         >
 
-        <Tab.Screen name={homeName} component={Home} options={{ headerShown: false }}/>
+        <Tab.Screen name={homeName} component={HomeStackScreen} options={{ headerShown: false }}/>
         <Tab.Screen name={exploreName} component={Explore} options={{ headerShown: false }}/>
         <Tab.Screen name={addRaffleName} component={AddRaffle} />
         <Tab.Screen name={profileName} component={ProfileStackScreen} options={{ headerShown: false }} />

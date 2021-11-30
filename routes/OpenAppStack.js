@@ -4,6 +4,7 @@ import OpenApp from './../screens/OpenApp';
 import Login from './../screens/Login';
 import SignUp from './../screens/SignUp';
 import MainContainer from './../components/MainContainer';
+import ForgotPassword from '../screens/ForgotPassword';
 
 const screens = {
     OpenApp: {
@@ -20,6 +21,12 @@ const screens = {
     },
     SignUp: {
         screen: SignUp,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    ForgotPassword: {
+        screen: ForgotPassword,
         navigationOptions: {
             headerShown: false
         }

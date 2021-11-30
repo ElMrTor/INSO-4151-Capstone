@@ -53,6 +53,8 @@ const DATA = [
 function Item({feed_image, raffle_current, raffle_total, raffle_price})
 {
     return (
+
+        <TouchableOpacity>
         <View style={styles.card}>
                 <View style={styles.cardHeader}>
                     <View style={styles.headerLeft}>
@@ -68,6 +70,7 @@ function Item({feed_image, raffle_current, raffle_total, raffle_price})
                         style={styles.raffleImage}
                         source={{uri: 'https://pesonyb2c.vteximg.com.br/arquivos/ids/211437-1000-1000/PS5_Dig_DS.jpg?v=637364739009770000'}} />
             </View>
+            </TouchableOpacity>
     )
 }
 
