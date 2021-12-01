@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 export default function SignUp({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
 
     const pressHandlerLogin = () => {
         navigation.navigate('Login');
@@ -22,6 +24,15 @@ export default function SignUp({ navigation }) {
       <Text style={{color:"#9A9A9A", fontWeight: "bold", marginBottom:20}}>Please enter the details below to continue</Text>
 
       <View style={styles.inputView}>
+          <TextInput
+           style={styles.textInput}
+           placeholder="Name"
+           placeholderTextColor="#9A9A9A"
+           onChangeText={(name) => setName(name)}
+          />
+      </View>
+
+      <View style={styles.inputView}>
         <TextInput
           style={styles.textInput}
           placeholder="Email"
@@ -29,6 +40,14 @@ export default function SignUp({ navigation }) {
           onChangeText={(email) => setEmail(email)}
         />
       </View>
+      <View style={styles.inputView}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Username"
+            placeholderTextColor="#9A9A9A"
+            onChangeText={(username) => setUsername(username)}
+          />
+        </View>
 
       <View style={styles.inputView}>
         <TextInput
@@ -50,21 +69,12 @@ export default function SignUp({ navigation }) {
         />
       </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Birthday"
-          placeholderTextColor="#9A9A9A"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
-
       <TouchableOpacity
         style={styles.loginBtn}
         onPress={pressHandlerLogin}
         >
         <Text style={{color: 'white',fontWeight:"bold", fontSize:20}}>SIGN UP</Text>
-      </TouchableOpacity> 
+      </TouchableOpacity>
     </View>
   );
 }
