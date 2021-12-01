@@ -16,6 +16,7 @@ import AddReview from './../screens/AddReview';
 import AddRaffle from './../screens/AddRaffle';
 import MyRaffles from './../screens/MyRaffles';
 import UserProfile from './../screens/UserProfile';
+import SingleRaffleScreen from '../screens/SingleRaffleScreen';
 
 
 // Components
@@ -36,6 +37,8 @@ const editProfileName = "EditProfile";
 const reviewName = "MyReviews";
 const addReview = "AddReview";
 const raffles = "MyRaffles";
+const singleRaffle = "SingleRaffle";
+
 
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
@@ -60,6 +63,16 @@ function HomeStackScreen() {
     <ProfileStack.Navigator>
       <ProfileStack.Screen name={homeName} component={Home} options={{ headerTitle: () => <HomeHeader/> }}/>
       <ProfileStack.Screen name={profileName} component={UserProfile} options={{  headerTitle: () => <ProfileAsUser/> }}/>
+      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  }}/>
+    </ProfileStack.Navigator>
+  )
+}
+
+function ExploreStackScreen() {
+  return(
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name={exploreName} component={Explore} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{ headerShown: false }}/>
     </ProfileStack.Navigator>
   )
 }
@@ -102,7 +115,7 @@ function MainContainer() {
         >
 
         <Tab.Screen name={homeName} component={HomeStackScreen} options={{ headerShown: false }}/>
-        <Tab.Screen name={exploreName} component={Explore} options={{ headerShown: false }}/>
+        <Tab.Screen name={exploreName} component={ExploreStackScreen} options={{ headerShown: false }}/>
         <Tab.Screen name={addRaffleName} component={AddRaffle} />
         <Tab.Screen name={profileName} component={ProfileStackScreen} options={{ headerShown: false }} />
 

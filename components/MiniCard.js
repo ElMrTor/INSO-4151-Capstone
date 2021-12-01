@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList} from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import { Constants } from 'expo';
+import { useNavigation } from '@react-navigation/native';
 
 
 
@@ -52,9 +53,17 @@ const DATA = [
 
 function Item({feed_image, raffle_current, raffle_total, raffle_price})
 {
+
+    const navigation = useNavigation(); 
+
+    const pressHandlerSingleRaffle = () => {
+        navigation.navigate('SingleRaffle');
+      }  
     return (
 
-        <TouchableOpacity>
+        <TouchableOpacity 
+        onPress={pressHandlerSingleRaffle}
+        >
         <View style={styles.card}>
                 <View style={styles.cardHeader}>
                     <View style={styles.headerLeft}>

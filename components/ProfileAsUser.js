@@ -18,7 +18,11 @@ export default function ProfileAsUser() {
         
     </View>
   
-  ) 
+  )
+
+    
+
+     
 }
 
 const styles = StyleSheet.create({

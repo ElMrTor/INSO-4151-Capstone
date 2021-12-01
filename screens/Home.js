@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 
 import RaffleCard from '../components/RaffleCard';
 
-const Home = () => {
-
-    return(
-        <View style={styles.container}>
-            <RaffleCard  />
-        </View>
+export default class Home extends Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+      
+        return(
+            <View style={styles.container}>
+                <RaffleCard  />
+            </View>   
     );
-};
+    }
+ 
+   
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -19,4 +26,3 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Home;

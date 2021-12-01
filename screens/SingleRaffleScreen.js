@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 
-import RaffleCard from '../components/RaffleCard';
+import SingleRaffle from './SingleRaffle';
 
 const SingleRaffleScreen = () => {
 
     return(
         <View style={style.container}>
-            <RaffleCard  />
+            <SingleRaffle  />
         </View>
     );
 };
