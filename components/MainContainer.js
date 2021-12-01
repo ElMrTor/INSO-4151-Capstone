@@ -51,7 +51,6 @@ function ProfileStackScreen() {
       }}/>
       <ProfileStack.Screen name={profileSettingsName} component={ProfileSettings} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={raffles} component={MyRaffles} options={{ headerShown: false }}/>
-      <ProfileStack.Screen name={reviewName} component={MyReviews} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={bugName} component={ReportBug} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={editProfileName} component={Settings} options={{ headerShown: false }}/>
     </ProfileStack.Navigator>

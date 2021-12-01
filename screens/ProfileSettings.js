@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import ReportBug from './ReportBug';
 
 export default function ProfileSettings({ navigation }) {
     const [email, setEmail] = useState('');
@@ -20,13 +19,8 @@ export default function ProfileSettings({ navigation }) {
       navigation.navigate('Login');
     }
 
-   
     const pressHandlerSettings = () => {
       navigation.navigate('EditProfile');
-    }
-
-    const pressHandlerMyReviews = () => {
-      navigation.navigate('MyReviews');
     }
 
   return (
@@ -44,13 +38,6 @@ export default function ProfileSettings({ navigation }) {
         onPress={pressHandlerMyRaffles}
         >
         <Text style={styles.buttonsTxt}>Raffles</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-          style={styles.buttons}
-          onPress={pressHandlerMyReviews}
-          >
-          <Text style={styles.buttonsTxt}>My Reviews</Text>
       </TouchableOpacity>
 
       <TouchableOpacity

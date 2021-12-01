@@ -9,7 +9,7 @@ export default function AddRaffle({ navigation }){
     return (
         <View style={styles.container}>
           <ImagePicker />
-          <View style={styles.inputView}>
+          <View style={styles.textView}>
             <TextInput
               style={styles.textInput}
               placeholder="Raffle Title"
@@ -17,20 +17,48 @@ export default function AddRaffle({ navigation }){
             />
           </View>
 
+          <View style={{flexDirection: "row"}}>
+              <View style={styles.ticketView}>
+                <TextInput
+                  style={styles.ticketInput}
+                  placeholder="Price per Ticket"
+                  placeholderTextColor="#9A9A9A"
+
+                />
+              </View>
+              <View style={styles.ticketView}>
+                 <TextInput
+                    style={styles.ticketInput}
+                    placeholder="Amount of Tickets"
+                    placeholderTextColor="#9A9A9A"
+
+                  />
+              </View>
+           </View>
+
           <View style={styles.descriptionView}>
               <TextInput
                 style={styles.descriptionInput}
-                placeholder="Raffle Description"
+                placeholder="Description"
                 placeholderTextColor="#9A9A9A"
 
               />
            </View>
 
+           <View style={styles.textView}>
+             <TextInput
+               style={styles.textInput}
+               placeholder="Duration"
+               placeholderTextColor="#9A9A9A"
+
+             />
+          </View>
+
           <TouchableOpacity
                   style={styles.button}
                   onPress={() => Alert.alert('Simple Button pressed')}
                   >
-            <Text style={{color:"white",fontWeight: "bold",fontSize:20}}> SUBMIT </Text>
+            <Text style={{color:"white",fontWeight: "bold",fontSize:20}}> SUBMIT RAFFLE </Text>
           </TouchableOpacity>
 
         </View>
@@ -45,13 +73,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  inputView: {
+  ticketView: {
+    borderRadius:15,
+    height:56,
+    width: 159,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    backgroundColor:"#E5E5E5",
+  },
+
+  textView: {
      backgroundColor:"#E5E5E5",
      borderRadius:15,
      width:338,
      height:56,
-     marginBottom:10,
+     margin: 10,
    },
+
+   ticketInput: {
+    height:56,
+    padding:10,
+    flex: 1,
+    fontWeight:"bold",
+    fontSize:13,
+    margin: 10,
+  },
 
   textInput: {
     height:50,
@@ -66,12 +113,11 @@ const styles = StyleSheet.create({
     backgroundColor:"#E5E5E5",
     borderRadius:15,
     width:338,
-    height:200,
+    height:122,
   },
 
   descriptionInput: {
     height:50,
-    padding:10,
     marginLeft:20,
     fontWeight:"bold",
     fontSize: 16,
@@ -80,7 +126,6 @@ const styles = StyleSheet.create({
   button: {
     width:338,
     height:52,
-    margin:20,
     alignItems:"center",
     justifyContent:"center",
     borderRadius:14,
