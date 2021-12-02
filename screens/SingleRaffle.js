@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList} from 'react-native';
+import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList, Alert } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
 
 
 const DATA = [
@@ -14,21 +15,48 @@ const DATA = [
         raffle_current: 0,
         raffle_total: 100,
         raffle_price: 10,
-        raffle_title: 'Playstaion 5'
+        raffle_title: 'Playstation 5'
     }
 ]
 
 
-
 function Item({user_name, user_image, feed_image, feed_description, raffle_current, raffle_total, raffle_price, raffle_title})
 {
+    const [visible, setVisible] = useState(false);
+
+    const hideMenu = () => setVisible(false);
+
+    const showMenu = () => setVisible(true);
 
     const navigation = useNavigation(); 
 
     const pressHandlerUserProfile = () => {
         navigation.navigate('UserProfile');
-      }  
+      }
 
+     const pressHandlerDeleteRaffle = () => {
+        navigation.navigate('Home');
+        setVisible(false);
+     }
+
+     const alertDeleteRaffle = () => {
+        Alert.alert(
+              "Delete Raffle",
+              "Are you sure you want to delete your Raffle?",
+              [
+                {
+                  text: "Cancel",
+                  onPress: () => setVisible(false),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: pressHandlerDeleteRaffle }
+              ]
+            );
+      }
+
+      const deleteAlert = () => {
+
+      }
 
     return (
         <View style={styles.card}>
@@ -43,7 +71,14 @@ function Item({user_name, user_image, feed_image, feed_description, raffle_curre
                     </View>
                     <View style={styles.headerRight}>
                     <View style={{alignItems: 'flex-end', marginRight: 5}}><Text style={styles.price}> $10 </Text></View>
-                    <TouchableOpacity><FontAwesome name="ellipsis-h" style={styles.moreIcon}/></TouchableOpacity>
+
+                    <Menu
+                        visible={visible}
+                        anchor={<TouchableOpacity onPress={showMenu}><FontAwesome name="ellipsis-h" style={styles.moreIcon}/></TouchableOpacity>}
+                        onRequestClose={hideMenu}
+                        >
+                        <MenuItem textStyle={{fontWeight:"bold"}}onPress={alertDeleteRaffle}>Delete Raffle</MenuItem>
+                      </Menu>
                     </View>
                 </View>
                         <Image 
