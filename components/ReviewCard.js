@@ -52,8 +52,9 @@ export default function ReviewCard(){
                     review_description={item.review_description}
                     score={item.score}
                     />}
-                    keyExtractor={item => item.id}
-                />
+                    keyExtractor={(item, index) => {
+                        return index.toString();
+                    }}                />
         );
 }
 
