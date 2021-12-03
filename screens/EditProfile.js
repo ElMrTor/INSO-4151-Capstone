@@ -1,55 +1,83 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function EditProfile({ navigation }){
-    return (
-        <View style={styles.container}>
-          <Image
-            style={{width:120, height:120}}
-            source={require('./../assets/login.png')}
-          />
+export default class EditProfile extends Component {
+    constructor(props) {
+        super(props)
 
-          <Text style={{fontWeight:'bold', color:'#DA772C', fontSize:14, marginBottom: 10}}> Change Profile Picture </Text>
+        this.state = {
+          updateUsername: "",
+          updateEmail: "",
+          updateBio: "",
+        }
+      }
 
-          <Text style={styles.text}> Username </Text>
-          <View style={styles.inputView}>
-            <TextInput
-              style={styles.textInput}
-            />
-          </View>
+    editProfile = () => {
+       var profile = {
+            updateUsername: this.state.updateUsername,
+            updateEmail: this.state.updateEmail,
+            updateBio: this.state.updateBio,
+       };
 
+       console.log(JSON.stringify(profile))
+    }
 
-          <Text style={styles.text}> Email </Text>
-          <View style={styles.inputView}>
-              <TextInput
-                style={styles.textInput}
+    render() {
+        return (
+            <View style={styles.container}>
+              <Image
+                style={{width:120, height:120}}
+                source={require('./../assets/login.png')}
               />
-           </View>
 
-          <Text style={styles.text}> Bio </Text>
-          <View style={styles.bioView}>
-            <TextInput
-            style={styles.textInput}
-            />
-          </View>
+              <Text style={{fontWeight:'bold', color:'#DA772C', fontSize:14, marginBottom: 10}}> Change Profile Picture </Text>
 
-          <TouchableOpacity
-            style={styles.passwdBtn}
-            >
-            <Text style={{color:"white",fontWeight: "bold",fontSize:16}}> Change Password </Text>
-           </TouchableOpacity>
+              <Text style={styles.text}> Username </Text>
+              <View style={styles.inputView}>
+                <TextInput
+                  style={styles.textInput}
+                  onChangeText={(updateUsername) => this.setState({ updateUsername })}
+                  value={this.updateUsername}
+                />
+              </View>
 
-          <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => Alert.alert('Simple Button pressed')}
-                  >
-            <Text style={{color:"white",fontWeight: "bold",fontSize:16}}> Save Changes </Text>
-          </TouchableOpacity>
 
-        </View>
-      );
+              <Text style={styles.text}> Email </Text>
+              <View style={styles.inputView}>
+                  <TextInput
+                    style={styles.textInput}
+                    onChangeText={(updateEmail) => this.setState({ updateEmail })}
+                    value={this.updateEmail}
+                  />
+               </View>
+
+              <Text style={styles.text}> Bio </Text>
+              <View style={styles.bioView}>
+                <TextInput
+                style={styles.textInput}
+                onChangeText={(updateBio) => this.setState({ updateBio })}
+                value={this.updateBio}
+                />
+              </View>
+
+              <TouchableOpacity
+                style={styles.passwdBtn}
+                >
+                <Text style={{color:"white",fontWeight: "bold",fontSize:16}}> Change Password </Text>
+               </TouchableOpacity>
+
+              <TouchableOpacity
+                      style={styles.button}
+                      onPress={this.editProfile}
+                      >
+                <Text style={{color:"white",fontWeight: "bold",fontSize:16}}> Save Changes </Text>
+              </TouchableOpacity>
+
+            </View>
+          )
+      }
 }
 
 const styles = StyleSheet.create({
@@ -103,5 +131,14 @@ const styles = StyleSheet.create({
     position: 'relative',
     left: -140,
     top: 35,
-  }
+  },
+
+  textInput: {
+      height:50,
+      flex:1,
+      padding:10,
+      marginLeft:20,
+      fontWeight:"bold",
+      fontSize:16,
+    },
 });

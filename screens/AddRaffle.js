@@ -1,68 +1,109 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import ImagePicker from '../components/ImagePicker';
 
-export default function AddRaffle({ navigation }){
+export default class AddRaffle extends Component{
+    constructor(props) {
+        super(props)
 
-    return (
-        <View style={styles.container}>
-          <ImagePicker />
-          <View style={styles.textView}>
-            <TextInput
-              style={styles.textInput}
-              placeholder="Raffle Title"
-              placeholderTextColor="#9A9A9A"
-            />
-          </View>
+        this.state = {
+          raffleTitle: "",
+          rafflePrice: "",
+          raffleQty: "",
+          raffleDescription: "",
+          raffleDuration: "",
+        }
+      }
 
-          <View style={{flexDirection: "row"}}>
-              <View style={styles.ticketView}>
+     addNewRaffle = () => {
+       var raffle = {
+            raffleTitle: this.state.raffleTitle,
+            rafflePrice: this.state.rafflePrice,
+            raffleQty: this.state.raffleQty,
+            raffleDescription: this.state.raffleDescription,
+            raffleDuration: this.state.raffleDuration,
+       };
+
+       console.log(JSON.stringify(raffle))
+
+//        fetch("http://localhost:3000/send-data", {
+//              method: "post",
+//              headers: {
+//                "Content-Type": "application/json",
+//              },
+//              body: JSON.stringify(raffle),
+//            })
+        }
+
+    render() {
+        return (
+            <View style={styles.container}>
+
+              <ImagePicker />
+
+              <View style={styles.textView}>
                 <TextInput
-                  style={styles.ticketInput}
-                  placeholder="Price per Ticket"
+                  style={styles.textInput}
+                  placeholder="Raffle Title"
                   placeholderTextColor="#9A9A9A"
-
+                  onChangeText={(raffleTitle) => this.setState({ raffleTitle })}
+                  value={this.raffleTitle}
                 />
               </View>
-              <View style={styles.ticketView}>
-                 <TextInput
-                    style={styles.ticketInput}
-                    placeholder="Amount of Tickets"
+
+              <View style={{flexDirection: "row"}}>
+                  <View style={styles.ticketView}>
+                    <TextInput
+                      style={styles.ticketInput}
+                      placeholder="Price per Ticket"
+                      placeholderTextColor="#9A9A9A"
+                      onChangeText={(rafflePrice) => this.setState({ rafflePrice })}
+                      value={this.rafflePrice}
+                    />
+                  </View>
+                  <View style={styles.ticketView}>
+                     <TextInput
+                        style={styles.ticketInput}
+                        placeholder="Amount of Tickets"
+                        placeholderTextColor="#9A9A9A"
+                        onChangeText={(raffleQty) => this.setState({ raffleQty })}
+                        value={this.raffleQty}
+                      />
+                  </View>
+               </View>
+
+              <View style={styles.descriptionView}>
+                  <TextInput
+                    style={styles.descriptionInput}
+                    placeholder="Description"
                     placeholderTextColor="#9A9A9A"
-
+                    onChangeText={(raffleDescription) => this.setState({ raffleDescription })}
+                    value={this.raffleDescription}
                   />
+               </View>
+
+               <View style={styles.textView}>
+                 <TextInput
+                   style={styles.textInput}
+                   placeholder="Duration"
+                   placeholderTextColor="#9A9A9A"
+                   onChangeText={(raffleDuration) => this.setState({ raffleDuration })}
+                   value={this.raffleDuration}
+                 />
               </View>
-           </View>
 
-          <View style={styles.descriptionView}>
-              <TextInput
-                style={styles.descriptionInput}
-                placeholder="Description"
-                placeholderTextColor="#9A9A9A"
+              <TouchableOpacity
+                      style={styles.button}
+                      onPress={this.addNewRaffle}
+                      >
+                <Text style={{color:"white",fontWeight: "bold",fontSize:20}}> SUBMIT RAFFLE </Text>
+              </TouchableOpacity>
 
-              />
-           </View>
-
-           <View style={styles.textView}>
-             <TextInput
-               style={styles.textInput}
-               placeholder="Duration"
-               placeholderTextColor="#9A9A9A"
-
-             />
-          </View>
-
-          <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => Alert.alert('Simple Button pressed')}
-                  >
-            <Text style={{color:"white",fontWeight: "bold",fontSize:20}}> SUBMIT RAFFLE </Text>
-          </TouchableOpacity>
-
-        </View>
-      );
+            </View>
+          )
+        }
 }
 
 const styles = StyleSheet.create({

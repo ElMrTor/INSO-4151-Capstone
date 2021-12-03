@@ -1,74 +1,96 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 
-export default function Login({navigation}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+export default class Login extends Component {
+    constructor(props) {
+       super(props)
 
-    const pressHandlerSignUp = () => {
-      navigation.navigate('SignUp');
+       this.state = {
+         email: "",
+         password: "",
+       }
+     }
+
+     loginUser = () => {
+        var user = {
+             email: this.state.email,
+             password: this.state.password,
+        };
+        console.log(JSON.stringify(user))
+        this.props.navigation.navigate('MainContainer');
+//        fetch("http://localhost:3000/send-data", {
+//             method: "post",
+//             headers: {
+//               "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify(user),
+//           })
     }
 
-    const pressHandlerMainContainer = () => {
-      navigation.navigate('MainContainer');
+  render() {
+    const pressHandlerSignUp = () => {
+      this.props.navigation.navigate('SignUp');
     }
 
     const pressHandlerForgotPassword = () => {
-      navigation.navigate('ForgotPassword');
+      this.props.navigation.navigate('ForgotPassword');
     }
 
-  return (
-    <View style={styles.container}>
-      <Image
-        style={{width:120, height:120, marginBottom:45}}
-        source={require('./../assets/login.png')}
-      />
+      return (
+        <View style={styles.container}>
+          <Image
+            style={{width:120, height:120, marginBottom:45}}
+            source={require('./../assets/login.png')}
+          />
 
-      <Text style={{color:"#333333", fontWeight: "bold", marginBottom:5, fontSize: 36}}>Login</Text>
-      <Text style={{color:"#9A9A9A", fontWeight: "bold", marginBottom:20}}>Please enter the details below to continue</Text>
+          <Text style={{color:"#333333", fontWeight: "bold", marginBottom:5, fontSize: 36}}>Login</Text>
+          <Text style={{color:"#9A9A9A", fontWeight: "bold", marginBottom:20}}>Please enter the details below to continue</Text>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Email"
-          placeholderTextColor="#9A9A9A"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Email"
+              placeholderTextColor="#9A9A9A"
+              onChangeText={(email) => this.setState({ email })}
+              value={this.email}
+            />
+          </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Password"
-          placeholderTextColor="#9A9A9A"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
-      <TouchableOpacity
-         onPress={pressHandlerForgotPassword}
-      >
-        <Text style={{color:"#DA772C", fontWeight: "bold"}}>Forgot Password?</Text>
-      </TouchableOpacity>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Password"
+              placeholderTextColor="#9A9A9A"
+              secureTextEntry={true}
+              onChangeText={(password) => this.setState({ password })}
+              value={this.password}
+            />
+          </View>
+          <TouchableOpacity
+             onPress={pressHandlerForgotPassword}
+          >
+            <Text style={{color:"#DA772C", fontWeight: "bold"}}>Forgot Password?</Text>
+          </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.loginBtn}
-        onPress={pressHandlerMainContainer}
-        >
-        <Text style={{color: 'white',fontWeight:"bold", fontSize:20}}>LOGIN</Text>
-      </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.loginBtn}
+            onPress={this.loginUser}
+            >
+            <Text style={{color: 'white',fontWeight:"bold", fontSize:20}}>LOGIN</Text>
+          </TouchableOpacity>
 
-      <Text style={{color:"#9A9A9A",fontWeight: "bold"}}>Don’t have an account?
-      <TouchableOpacity
-              onPress={pressHandlerSignUp}
-              >
-        <Text style={{color:"#DA772C",fontWeight: "bold"}}> Register</Text>
-      </TouchableOpacity>
-      </Text>
+          <Text style={{color:"#9A9A9A",fontWeight: "bold"}}>Don’t have an account?
+          <TouchableOpacity
+                  onPress={pressHandlerSignUp}
+                  >
+            <Text style={{color:"#DA772C",fontWeight: "bold"}}> Register</Text>
+          </TouchableOpacity>
+          </Text>
 
-    </View>
-  );
+        </View>
+      )
+    }
 }
 
 const styles = StyleSheet.create({
