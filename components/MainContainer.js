@@ -17,6 +17,7 @@ import AddRaffle from './../screens/AddRaffle';
 import MyRaffles from './../screens/MyRaffles';
 import UserProfile from './../screens/UserProfile';
 import SingleRaffleScreen from '../screens/SingleRaffleScreen';
+import BalanceButtons from '../screens/BalanceButtons';
 
 
 // Components
@@ -31,13 +32,13 @@ const exploreName = "Explore";
 const addRaffleName = "Add Raffle";
 const profileSettingsName = "ProfileSettings";
 const profileName = "UserProfile";
-
 const bugName = "ReportBug";
 const editProfileName = "EditProfile";
 const reviewName = "MyReviews";
 const addReview = "AddReview";
 const raffles = "MyRaffles";
 const singleRaffle = "SingleRaffle";
+const balanceButtonsName = "BalanceButtons";
 
 
 const Tab = createBottomTabNavigator();
@@ -53,6 +54,7 @@ function ProfileStackScreen() {
       <ProfileStack.Screen name={raffles} component={MyRaffles} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={bugName} component={ReportBug} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={editProfileName} component={Settings} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={balanceButtonsName} component={BalanceButtons} options={{ headerShown: false }}/>
     </ProfileStack.Navigator>
   )
 }

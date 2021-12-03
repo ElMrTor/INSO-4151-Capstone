@@ -23,6 +23,10 @@ export default function ProfileSettings({ navigation }) {
       navigation.navigate('EditProfile');
     }
 
+    const pressHandlerPayment = () => {
+      navigation.navigate('BalanceButtons');
+    }
+
   return (
     <View style={styles.container}>
      
@@ -42,7 +46,7 @@ export default function ProfileSettings({ navigation }) {
 
       <TouchableOpacity
         style={styles.buttons}
-        onPress={() => Alert.alert('Simple Button pressed')}
+        onPress={pressHandlerPayment}
         >
         <Text style={styles.buttonsTxt}>Payment Information</Text>
       </TouchableOpacity>
