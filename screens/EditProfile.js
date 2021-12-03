@@ -2,15 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import ImagePicker from '../components/ImagePicker';
 
 export default function EditProfile({ navigation }){
     return (
         <View style={styles.container}>
-          <Image
-            style={{width:120, height:120}}
-            source={require('./../assets/login.png')}
-          />
-
+          <ImagePicker />
           <Text style={{fontWeight:'bold', color:'#DA772C', fontSize:14, marginBottom: 10}}> Change Profile Picture </Text>
 
           <Text style={styles.text}> Username </Text>

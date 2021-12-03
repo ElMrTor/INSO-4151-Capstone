@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'reac
 
 import RaffleCard from '../components/RaffleCard';
 
-export default class Home extends Component{
+export default class HomeScreen extends Component{
     constructor(props){
         super(props);
     }

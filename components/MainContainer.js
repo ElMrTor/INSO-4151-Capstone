@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createStackNavigator} from '@react-navigation/stack';
 
 // Screens
-import TheHome from './../screens/Home';
+import TheHome from '../screens/HomeScreen';
 import Explore from './../screens/Explore';
 import ProfileSettings from '../screens/ProfileSettings';
 import SignUp from './../screens/SignUp';
@@ -15,9 +15,10 @@ import MyReviews from './../screens/MyReviews';
 import AddReview from './../screens/AddReview';
 import AddRaffle from './../screens/AddRaffle';
 import MyRaffles from './../screens/MyRaffles';
-import UserProfile from './../screens/UserProfile';
+import TheUserProfile from '../screens/UserProfileScreen';
 import SingleRaffleScreen from '../screens/SingleRaffleScreen';
 import BalanceButtons from '../screens/BalanceButtons';
+import ProfileScreenAsUser from '../screens/ProfileScreenAsUser';
 
 
 // Components
@@ -44,10 +45,32 @@ const balanceButtonsName = "BalanceButtons";
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
 
+
+
+function HomeStackScreen() {
+  return(
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name={"homeName"} component={TheHome} options={{  headerTitle: () => <HomeHeader/> }}/>
+      <ProfileStack.Screen name={"profileNameUser"} component={ProfileScreenAsUser} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
+      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null }}/>
+    </ProfileStack.Navigator>
+  )
+}
+
+function ExploreStackScreen() {
+  return(
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name={"exploreName"} component={Explore} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={"profileName"} component={ProfileScreenAsUser} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
+      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
+    </ProfileStack.Navigator>
+  )
+}
+
 function ProfileStackScreen() {
   return(
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name={profileName} component={UserProfile} options={{
+      <ProfileStack.Screen name={"profileName"} component={TheUserProfile} options={{
         headerTitle: () => <ProfileHeader/>
       }}/>
       <ProfileStack.Screen name={profileSettingsName} component={ProfileSettings} options={{ headerShown: false }}/>
@@ -59,28 +82,9 @@ function ProfileStackScreen() {
   )
 }
 
-function HomeStackScreen() {
-  return(
-    <ProfileStack.Navigator>
-      <ProfileStack.Screen name={homeName} component={TheHome} options={{  headerTitle: () => <HomeHeader/> }}/>
-      <ProfileStack.Screen name={profileName} component={UserProfile} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
-      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null }}/>
-    </ProfileStack.Navigator>
-  )
-}
-
-function ExploreStackScreen() {
-  return(
-    <ProfileStack.Navigator>
-      <ProfileStack.Screen name={exploreName} component={Explore} options={{ headerShown: false }}/>
-      <ProfileStack.Screen name={profileName} component={UserProfile} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
-      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
-    </ProfileStack.Navigator>
-  )
-}
-
 function MainContainer() {
   return (
+
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName={homeName}
@@ -107,13 +111,12 @@ function MainContainer() {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
+
+          tabBarActiveTintColor: "orange",
+          tabBarInactiveTintColor: "grey",
+          tabBarShowLabel: false,
         })}
-        tabBarOptions={{
-          activeTintColor: 'orange',
-          inactiveTintColor: 'grey',
-          style: { padding: 10, height: 70},
-          showLabel: false,
-        }}
+   
         >
 
         <Tab.Screen name={homeName} component={HomeStackScreen} options={{ headerShown: false }}/>

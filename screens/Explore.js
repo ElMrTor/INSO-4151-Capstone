@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, LogBox } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 import MiniCard from '../components/MiniCard';
@@ -9,8 +9,13 @@ import MiniCard from '../components/MiniCard';
 
 export default function Explore() {
     const [search, setSearch] = useState('');
+
+    useEffect(() => {
+      LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, []);
   return (
   
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.header}>
       <Text style={{fontSize:36, fontWeight:'bold', color:'white',
@@ -36,6 +41,7 @@ export default function Explore() {
             <MiniCard />
             </View>
         </View>
+       </ScrollView>
   );
 }
 

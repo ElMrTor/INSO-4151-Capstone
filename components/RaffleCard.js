@@ -174,7 +174,9 @@ const TheFlatList = () => {
             raffle_current={item.raffle_current}
             raffle_total={item.raffle_total}
             />}
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => {
+                return index.toString();
+            }}
         />
         </View>
     );

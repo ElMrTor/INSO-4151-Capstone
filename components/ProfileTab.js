@@ -44,7 +44,7 @@ function ProfileTab() {
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
-        tabBarOptions={{
+        screenOptions={{
           activeTintColor: 'orange',
           inactiveTintColor: 'grey',
           style: { padding: 10, height: 70},

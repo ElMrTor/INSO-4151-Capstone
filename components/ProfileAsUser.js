@@ -1,12 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons } from '@expo/vector-icons'; 
-import { MaterialIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-
-
 
 export default function ProfileAsUser() {
   return (
@@ -18,11 +12,7 @@ export default function ProfileAsUser() {
         
     </View>
   
-  )
-
-    
-
-     
+  )     
 }
 
 const styles = StyleSheet.create({
