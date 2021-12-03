@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 
-import SingleRaffle from './SingleRaffle';
+import SingleRaffle from '../components/SingleRaffle';
 
 const SingleRaffleScreen = () => {
 

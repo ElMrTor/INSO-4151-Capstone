@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createStackNavigator} from '@react-navigation/stack';
 
 // Screens
-import Home from './../screens/Home';
+import TheHome from './../screens/Home';
 import Explore from './../screens/Explore';
 import ProfileSettings from '../screens/ProfileSettings';
 import SignUp from './../screens/SignUp';
@@ -60,9 +60,9 @@ function ProfileStackScreen() {
 function HomeStackScreen() {
   return(
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name={homeName} component={Home} options={{ headerTitle: () => <HomeHeader/> }}/>
-      <ProfileStack.Screen name={profileName} component={UserProfile} options={{  headerTitle: () => <ProfileAsUser/> }}/>
-      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  }}/>
+      <ProfileStack.Screen name={homeName} component={TheHome} options={{  headerTitle: () => <HomeHeader/> }}/>
+      <ProfileStack.Screen name={profileName} component={UserProfile} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
+      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null }}/>
     </ProfileStack.Navigator>
   )
 }
@@ -71,7 +71,8 @@ function ExploreStackScreen() {
   return(
     <ProfileStack.Navigator>
       <ProfileStack.Screen name={exploreName} component={Explore} options={{ headerShown: false }}/>
-      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={profileName} component={UserProfile} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
+      <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
     </ProfileStack.Navigator>
   )
 }

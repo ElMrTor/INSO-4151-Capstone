@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList, ScrollView, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import ProfileTab from '../components/ProfileTab'
 import MiniCard from '../components/MiniCard';
@@ -16,7 +16,6 @@ export default class UserProfile extends Component{
             showForm: 0
         };
     }
-    
     render() {
         var form;
         if (this.state.showForm === 0) {
@@ -29,9 +28,9 @@ export default class UserProfile extends Component{
            );
            }
            return(
-        
+            <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView>
             <View style={styles.container}>
-                          <ScrollView vertical>
 
                 <View style={{height:150, alignItems: 'center', marginBottom: 50}}>
                     <Image
@@ -60,9 +59,10 @@ export default class UserProfile extends Component{
                 </View>
                 {form}
 
-                </ScrollView >
 
             </View>
+ </ScrollView>
+</SafeAreaView>
         );   
      }
 }
@@ -99,12 +99,14 @@ const styles = StyleSheet.create({
       backgroundColor: "#DA772C",
       borderRadius: 8,
       height: 40,
+      width: '88%',
       justifyContent: "space-around",
       marginBottom: 5,
       marginLeft: 10,
       marginRight: 10,
       paddingLeft: 30,
       paddingRight: 30
+    
   
     },
   

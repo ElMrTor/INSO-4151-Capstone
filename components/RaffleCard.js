@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList} from 'react-native';
+import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList, Alert, SafeAreaView, ScrollView} from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
 
 
 const DATA = [
@@ -48,70 +49,123 @@ const DATA = [
 
 
 
-function Item({user_name, user_image, feed_image, feed_description, raffle_current, raffle_total, raffle_price, raffle_title})
+ function Item ({user_name, user_image, feed_image, feed_description, raffle_current, raffle_total, raffle_price, raffle_title})
 {
-
+   
+    const [visible, setVisible] = useState(false);
+    const [count, setCount] = useState(0); 
+    const hideMenu = () => setVisible(false);
+    const showMenu = () => setVisible(true);
     const navigation = useNavigation(); 
 
+     
     const pressHandlerUserProfile = () => {
         navigation.navigate('UserProfile');
-      }  
+      }
 
+     const pressHandlerDeleteRaffle = () => {
+        navigation.navigate('Home');
+        setVisible(false);
+     }
 
-    return (
+     const noNegative = () => {
+
+        setCount(count - 1);
+        if(count <= 0){
+            setCount(0);
+        }
+     }
+
+     const alertDeleteRaffle = () => {
+        Alert.alert(
+              "Delete Raffle",
+              "Are you sure you want to delete your Raffle?",
+              [
+                {
+                  text: "Cancel",
+                  onPress: () => setVisible(false),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: pressHandlerDeleteRaffle }
+              ]
+            );
+      }
+
+      const deleteAlert = () => {
+
+      }
+    return(
         <View style={styles.card}>
-                <View style={styles.cardHeader}>
-                    <View style={styles.headerLeft}>
-                         <Image 
-                             style={styles.userImage}
-                             source={require ('./../assets/michael-jordan.jpeg')} />
-                             <TouchableOpacity
-                             onPress={pressHandlerUserProfile}
-                             ><Text style={styles.userName}>{user_name}</Text></TouchableOpacity>
-                    </View>
-                    <View style={styles.headerRight}>
-                    <View style={{alignItems: 'flex-end', marginRight: 5}}><Text style={styles.price}> $10 </Text></View>
-                    <TouchableOpacity><FontAwesome name="ellipsis-h" style={styles.moreIcon}/></TouchableOpacity>
-                    </View>
-                </View>
-                        <Image 
-                        style={styles.raffleImage}
-                        source={{uri: 'https://pesonyb2c.vteximg.com.br/arquivos/ids/211437-1000-1000/PS5_Dig_DS.jpg?v=637364739009770000'}}/>
-                        
-                        <Text style={{fontWeight:'bold', color: '#000',fontSize: 20, marginLeft: 8}}> 
-                        Playstation 5</Text>
-                        <View style={styles.cardFooter}> 
-                           
-                            <View style={styles.footerLeft}>
-                            <Text style={{fontWeight:'bold', color: '#5a5a5a', paddingTop: 5, fontSize: 13, marginRight: 10, marginBottom: 5}} >
-                            {feed_description}
-                           </Text>
-                           
-                            </View>
-                            <View style={{flexDirection: 'column'}}>
-                            <View style={{alignItems: 'center', marginRight: 5, marginTop: -20, marginBottom: 5}}>
-                                <Text style={styles.raffleCount}>{raffle_current} / {raffle_total}</Text>
-                            </View> 
-                                <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                                    <TouchableOpacity><FontAwesome name="plus-circle" color="orange" size={25}/></TouchableOpacity>
-                                    <Text style={{ marginLeft: 2, marginRight: 2, fontSize: 20, fontWeight: 'bold'}}> 0 </Text>
-                                    <TouchableOpacity><FontAwesome name="minus-circle" color="orange" size={25}/></TouchableOpacity>
-                                </View>
-                                <TouchableOpacity 
-                                    style={styles.button}>
-                                    <Text style={{color:"white",fontWeight: "bold",fontSize:14}}> {'ENTER'} </Text>
-                                    </TouchableOpacity>
-                                </View>
-                        </View>
+        <View style={styles.cardHeader}>
+            <View style={styles.headerLeft}>
+                 <Image 
+                     style={styles.userImage}
+                     source={require ('./../assets/michael-jordan.jpeg')} />
+                     <TouchableOpacity
+                     onPress={pressHandlerUserProfile}
+                     ><Text style={styles.userName}>{user_name}</Text></TouchableOpacity>
             </View>
-    )
+            <View style={styles.headerRight}>
+            <View style={{alignItems: 'flex-end', marginRight: 5}}><Text style={styles.price}> $10 </Text></View>
+
+            <Menu
+                visible={visible}
+                anchor={<TouchableOpacity onPress={showMenu}><FontAwesome name="ellipsis-h" style={styles.moreIcon}/></TouchableOpacity>}
+                onRequestClose={hideMenu}
+                >
+                <MenuItem textStyle={{fontWeight:"bold"}}onPress={alertDeleteRaffle}>Delete Raffle</MenuItem>
+              </Menu>
+            </View>
+        </View>
+                <Image 
+                style={styles.raffleImage}
+                source={{uri: 'https://pesonyb2c.vteximg.com.br/arquivos/ids/211437-1000-1000/PS5_Dig_DS.jpg?v=637364739009770000'}}/>
+                
+                <Text style={{fontWeight:'bold', color: '#000',fontSize: 20, marginLeft: 8}}> 
+                Playstation 5</Text>
+                <View style={styles.cardFooter}> 
+                   
+                    <View style={styles.footerLeft}>
+                    <Text style={{fontWeight:'bold', color: '#5a5a5a', paddingTop: 5, fontSize: 13, marginRight: 10, marginBottom: 5}} >
+                    {feed_description}
+                   </Text>
+                   
+                    </View>
+                    <View style={{flexDirection: 'column'}}>
+                    <View style={{alignItems: 'center', marginRight: 5, marginTop: -20, marginBottom: 5}}>
+                        <Text style={styles.raffleCount}>{raffle_current} / {raffle_total}</Text>
+                    </View> 
+                        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                            <TouchableOpacity
+                            onPress={() => setCount(count + 1)}
+                            >
+                                <FontAwesome name="plus-circle" color="orange" size={25}/>
+                                </TouchableOpacity>
+                            <Text style={{ marginLeft: 2, marginRight: 2, fontSize: 20, fontWeight: 'bold'}}> { count } </Text>
+                            <TouchableOpacity
+                             onPress={() => noNegative() }
+                            >
+                                <FontAwesome name="minus-circle" color="orange" size={25}/></TouchableOpacity>
+                        </View>
+                        <TouchableOpacity 
+                            style={styles.button}>
+                            <Text style={{color:"white",fontWeight: "bold",fontSize:14}}> {'ENTER'} </Text>
+                            </TouchableOpacity>
+                        </View>
+                </View>
+    </View>
+);
+   
 }
+
 
 function RaffleCard() {
 
-    return (
 
-        <FlatList
+const TheFlatList = () => {
+    return(
+        <View>
+              <FlatList
             data={DATA}
             renderItem={({ item }) => <Item user_name={item.user_name}
             user_image={item.user_image}
@@ -122,6 +176,14 @@ function RaffleCard() {
             />}
             keyExtractor={item => item.id}
         />
+        </View>
+    );
+}
+
+    return (
+        <View>
+            <TheFlatList />
+        </View>
     );
 };
 
@@ -194,7 +256,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     raffleImage: {
-        height: 450,
+        height: 500,
         width: 'auto',
         alignItems: 'center',
         justifyContent: 'center',

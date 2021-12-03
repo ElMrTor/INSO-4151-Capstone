@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList} from 'react-native';
+import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList, SafeAreaView} from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import { Constants } from 'expo';
 import { useNavigation } from '@react-navigation/native';
@@ -85,8 +85,8 @@ function Item({feed_image, raffle_current, raffle_total, raffle_price})
 
 function MiniCard() {
     return (
-
-        <FlatList
+        
+    <FlatList
             data={DATA}
             numColumns={2}
             renderItem={({ item, index }) => <Item user_name={item.user_name}
@@ -97,8 +97,7 @@ function MiniCard() {
             raffle_total={item.raffle_total}
             />}
             keyExtractor={item => item.id}
-        />
-   
+        />   
     );
 };
 

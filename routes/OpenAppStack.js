@@ -1,38 +1,39 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer, StackRouter } from 'react-navigation';
-import OpenApp from './../screens/OpenApp';
-import Login from './../screens/Login';
-import SignUp from './../screens/SignUp';
-import MainContainer from './../components/MainContainer';
-import ForgotPassword from '../screens/ForgotPassword';
+import OpenAppScreen from './../screens/OpenApp';
+import LoginScreen from './../screens/Login';
+import SignUpScreen from './../screens/SignUp';
+import MainContainerScreen from './../components/MainContainer';
+import ForgotPasswordScreen from '../screens/ForgotPassword';
+import SingleRaffleScreen from '../screens/SingleRaffleScreen';
 
 const screens = {
     OpenApp: {
-        screen: OpenApp,
+        screen: OpenAppScreen,
         navigationOptions: {
             headerShown: false
         }
     },
     Login: {
-        screen: Login,
+        screen: LoginScreen,
         navigationOptions: {
             headerShown: false
         }
     },
     SignUp: {
-        screen: SignUp,
+        screen: SignUpScreen,
         navigationOptions: {
             headerShown: false
         }
     },
     ForgotPassword: {
-        screen: ForgotPassword,
+        screen: ForgotPasswordScreen,
         navigationOptions: {
             headerShown: false
         }
     },
     MainContainer: {
-        screen: MainContainer,
+        screen: MainContainerScreen,
         navigationOptions: {
             headerShown: false
         }

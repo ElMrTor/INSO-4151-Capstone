@@ -10,9 +10,8 @@ import MiniCard from '../components/MiniCard';
 export default function Explore() {
     const [search, setSearch] = useState('');
   return (
-
+  
     <View style={styles.container}>
-          <ScrollView vertical>
       <View style={styles.header}>
       <Text style={{fontSize:36, fontWeight:'bold', color:'white',
        marginBottom:3, marginTop:20}}>Discover</Text>
@@ -36,7 +35,6 @@ export default function Explore() {
       />
             <MiniCard />
             </View>
-            </ScrollView>
         </View>
   );
 }
@@ -51,7 +49,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginLeft: 30,
     marginTop: 40
-
   },
 
   content: {
