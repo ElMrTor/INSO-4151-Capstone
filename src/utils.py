@@ -34,6 +34,3 @@ def connect_db():
         print(f'Connection to the database failed with error {e}')
     return connection
 
-
-
-

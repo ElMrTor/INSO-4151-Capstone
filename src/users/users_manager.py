@@ -6,6 +6,14 @@ from utils import OK, ACCEPTED, BAD_REQUEST, CREATED, NOT_FOUND, NOT_ACCEPTABLE,
 
 class UserManager:
 
+    def validate_user(self, username, password):        
+        data = UserDAO().get_by_attribute('username', username)
+        if data:
+            user = User(*data)
+            if user.password == password:
+                return user
+        return None
+
     def user_exist(self, username):
         if UserDAO().get_by_attribute('username', username):
             return True
@@ -22,7 +30,7 @@ class UserManager:
         return jsonify(User=[vars(User(*rev)) for rev in UserDAO().get_all()]), OK
 
     def get(self, user_id):
-        info = UserDAO().get(user_id)
+        info = UserDAO().get(user_id)        
         if info:
             return jsonify(vars(User(*info))), OK
         else:
