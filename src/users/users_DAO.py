@@ -8,22 +8,25 @@ class UserDAO:
 
     def get_all(self):
         cursor = self.connection.cursor()
-        query = 'select * from "Capstone_Inso".public."User"'
+        query = 'select user_id, stat_id, name, email, password, verified, total_raffle_participation, priviledges, username from "Capstone_Inso".public."User"'
         cursor.execute(query)
         values = cursor.fetchall()
         cursor.close()
-        self.connection.close()
+        self.connection.close()            
         return values
 
     def get_by_attribute(self, attr_name, attr_val):
         cursor = self.connection.cursor()        
-        get_query = SQL('SELECT * FROM "Capstone_Inso".public."User" WHERE {}=%s').format(Identifier(attr_name))
+        get_query = SQL('SELECT user_id, stat_id, name, email, password, verified, total_raffle_participation, priviledges, username FROM "Capstone_Inso".public."User" WHERE {}=%s').format(Identifier(attr_name))
         value = None
         cursor.execute(get_query, (attr_val, ))
         value = cursor.fetchone()
         cursor.close()
         self.connection.close()
-        return value
+        if value and isinstance(value, tuple):
+            return value
+        else:
+            return None        
 
     def get(self, user_id):
         return self.get_by_attribute('user_id', user_id)        
