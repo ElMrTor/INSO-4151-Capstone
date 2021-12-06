@@ -6,3 +6,5 @@ testing.py
 
 **/**/*.pyc
 *.pyc
+.expo
+node_modules
