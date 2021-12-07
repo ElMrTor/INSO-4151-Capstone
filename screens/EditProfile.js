@@ -51,15 +51,6 @@ export default class EditProfile extends Component {
                   />
                </View>
 
-              <Text style={styles.text}> Bio </Text>
-              <View style={styles.bioView}>
-                <TextInput
-                style={styles.textInput}
-                onChangeText={(updateBio) => this.setState({ updateBio })}
-                value={this.updateBio}
-                />
-              </View>
-
               <TouchableOpacity
                 style={styles.passwdBtn}
                 >
