@@ -96,7 +96,7 @@ export default class SignUp extends Component{
                onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
                value={this.confirmPassword}
              />
-           </View>
+           </View> 
 
            <TouchableOpacity
              style={styles.loginBtn}

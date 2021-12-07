@@ -5,17 +5,28 @@ import { AppLoading } from 'expo-app-loading';
 import { BowlbyOneSC_400Regular } from '@expo-google-fonts/bowlby-one-sc';
 import { useFonts } from 'expo-font';
 import {FontAwesome} from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function HomeHeader() {
          
+  const navigation = useNavigation(); 
+
+     
+    const pressHandlerAddBalance = () => {
+        navigation.navigate('BalanceButtons');
+      }
+
           return (
             <View style={styles.container}>
                <View style={styles.cardHeader}>
                     <View style={styles.headerLeft}>
                     <View style={{ marginRight: 100}}><Text style={styles.price}>Available Balance: $10 </Text></View>
                     <TouchableOpacity 
-                                    style={styles.button}>
+                                    style={styles.button}
+                                    onPress={pressHandlerAddBalance}
+
+                                    >
                                     <Text style={{color:"white",fontWeight: "bold",fontSize:14}}> {'Add Balance'} </Text>
                                     </TouchableOpacity>
                     </View>

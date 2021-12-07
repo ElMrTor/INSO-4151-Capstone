@@ -10,9 +10,9 @@ import MiniCard from '../components/MiniCard';
 export default function Explore() {
     const [search, setSearch] = useState('');
 
-    useEffect(() => {
-      LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-  }, []);
+  //   useEffect(() => {
+  //     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  // }, []);
   return (
   
     <ScrollView>
