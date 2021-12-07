@@ -84,16 +84,6 @@ export default class AddRaffle extends Component{
                   />
                </View>
 
-               <View style={styles.textView}>
-                 <TextInput
-                   style={styles.textInput}
-                   placeholder="Duration"
-                   placeholderTextColor="#9A9A9A"
-                   onChangeText={(raffleDuration) => this.setState({ raffleDuration })}
-                   value={this.raffleDuration}
-                 />
-              </View>
-
               <TouchableOpacity
                       style={styles.button}
                       onPress={this.addNewRaffle}
@@ -154,7 +144,8 @@ const styles = StyleSheet.create({
     backgroundColor:"#E5E5E5",
     borderRadius:15,
     width:338,
-    height:122,
+    height:175,
+    marginBottom: 10,
   },
 
   descriptionInput: {

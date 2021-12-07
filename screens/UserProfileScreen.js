@@ -8,7 +8,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import ReviewCard from '../components/ReviewCard';
 
 
-
 export default class UserProfile extends Component{
     constructor(props){
         super(props);
