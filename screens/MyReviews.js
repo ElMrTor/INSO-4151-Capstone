@@ -6,27 +6,27 @@ import ReviewCard from '../components/ReviewCard';
 
 const DATA = [
     {
-        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'My raven loves to play with it.',
         score: 4.9
     },
     {
-        review_description: 'Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'My neighbor Albertina has one of these. She works as a gardener and she says it looks humongous.',
         score: 5.0
     },
     {
-        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'The box this comes in is 4 meter by 5 foot and weights 18 kilogram',
         score: 4.5
     },
     {
-        review_description: 'Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'I saw one of these in Juan de Nova Island and I bought one.',
         score: 4.0
     },
     {
-        review_description: 'Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'This Coca-Cola works certainly well. It accidentally improves my baseball by a lot.',
         score: 5.0
     },
     {
-        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'I saw one of these in Juan de Nova Island and I bought one.',
         score: 4.2
     },
 ]

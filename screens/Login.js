@@ -1,9 +1,6 @@
 import React, { useState, Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, Image, TextInput, ToastAndroid } from 'react-native';
 
-const { Req } = NativeModules
-
-
 
 export default class Login extends Component {
     constructor(props) {

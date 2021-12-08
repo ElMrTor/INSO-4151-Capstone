@@ -10,39 +10,39 @@ const DATA = [
     {
         user_name: 'Michael Jordan',
         user_image: './../assets/michael-jordan.jpeg',
-        feed_image: './../assets/imagePlaystation.png',
-        feed_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
-        raffle_current: 0,
+        feed_image: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg',
+        feed_description: 'The box this comes in is 4 meter by 5 foot and weights 18 kilogram.',
+        raffle_current: 55,
         raffle_total: 100,
-        raffle_price: 10,
-        raffle_title: 'Playstaion 5'
+        raffle_price: 15,
+        raffle_title: 'Plush Cat'
     },
     {
         user_name: 'Michael Jordan',
         user_image: './../assets/michael-jordan.jpeg',
-        feed_image: './../assets/imagePlaystation.png',
-        feed_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
-        raffle_current: 0,
-        raffle_total: 100,
-        raffle_price: 10,
-        raffle_title: 'Playstaion 5'
+        feed_image: 'https://m.media-amazon.com/images/I/41GZI7HASrL._SL1000_.jpg',
+        feed_description: 'one of my hobbies is mushroom cultivation. and when i\'m cultivating mushrooms this works great.',
+        raffle_current: 77,
+        raffle_total: 200,
+        raffle_price: 100,
+        raffle_title: 'Bottle of Oil'
     },  {
         user_name: 'Michael Jordan',
         user_image: './../assets/michael-jordan.jpeg',
-        feed_image: './../assets/imagePlaystation.png',
-        feed_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
-        raffle_current: 0,
-        raffle_total: 100,
-        raffle_price: 10,
-        raffle_title: 'Playstaion 5'
+        feed_image: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-11-select-202104_FMT_WHH?wid=2000&hei=2000&fmt=jpeg&qlt=80&.v=1617067383000',
+        feed_description: 'I tried to electrocute it but got sweetmeat all over it.',
+        raffle_current: 97,
+        raffle_total: 300,
+        raffle_price: 8,
+        raffle_title: 'Cork'
     },  {
         user_name: 'Michael Jordan',
         user_image: './../assets/michael-jordan.jpeg',
-        feed_image: './../assets/imagePlaystation.png',
-        feed_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
-        raffle_current: 0,
-        raffle_total: 100,
-        raffle_price: 10,
+        feed_image: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/42-alu-space-sport-black-nc-1up?wid=1673&hei=1353&fmt=jpeg&qlt=95&.v=1594318651000',
+        feed_description: 'My co-worker Mitchell has one of these. He says it looks dry.',
+        raffle_current: 700,
+        raffle_total: 10000,
+        raffle_price: 1,
         raffle_title: 'Playstaion 5'
     },
 ]
@@ -119,7 +119,7 @@ const DATA = [
         </View>
                 <Image 
                 style={styles.raffleImage}
-                source={{uri: 'https://pesonyb2c.vteximg.com.br/arquivos/ids/211437-1000-1000/PS5_Dig_DS.jpg?v=637364739009770000'}}/>
+                source={{uri: feed_image}}/>
                 
                 <Text style={{fontWeight:'bold', color: '#000',fontSize: 20, marginLeft: 8}}> 
                 Playstation 5</Text>

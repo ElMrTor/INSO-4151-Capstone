@@ -7,43 +7,43 @@ import { Constants } from 'expo';
 
 const DATA = [
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg',
         raffle_current: 0,
         raffle_total: 100,
         raffle_price: 10,
     },
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg',
         raffle_current: 0,
         raffle_total: 10,
         raffle_price: 10,
     },
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg',
         raffle_current: 20,
         raffle_total: 10,
         raffle_price: 10,
     },
      {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg',
         raffle_current: 9,
         raffle_total: 10,
         raffle_price: 10,
     },
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg',
         raffle_current: 9,
         raffle_total: 10,
         raffle_price: 10,
     },  
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg',
         raffle_current: 9,
         raffle_total: 10,
         raffle_price: 10,
     },
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg',
         raffle_current: 9,
         raffle_total: 10,
         raffle_price: 10,
@@ -66,7 +66,7 @@ function Item({feed_image, raffle_current, raffle_total, raffle_price})
                 </View>
                         <Image 
                         style={styles.raffleImage}
-                        source={{uri: 'https://pesonyb2c.vteximg.com.br/arquivos/ids/211437-1000-1000/PS5_Dig_DS.jpg?v=637364739009770000'}} />
+                        source={{uri: 'https://m.media-amazon.com/images/I/819XYUimTuL._AC_SL1500_.jpg'}} />
             </View>
     )
 }

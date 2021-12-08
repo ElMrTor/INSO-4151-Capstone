@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, ToastAndroid } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, ToastAndroid, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 export default class SignUp extends Component{
@@ -26,7 +26,8 @@ export default class SignUp extends Component{
        };
 
        if (user.confirmPassword != user.password) {
-         ToastAndroid.show("Passwords do not match.", ToastAndroid.SHORT)
+         if (Platform.OS == 'android') 
+          ToastAndroid.show("Passwords do not match.", ToastAndroid.SHORT)
        }
        else {
          var user = {
@@ -38,7 +39,8 @@ export default class SignUp extends Component{
           verified : false,          
           total_raffle_participation : 0,
           priviledges : 0,
-          username: this.state.username,          
+          username: this.state.username,      
+          balance : 0.0    
          }
          
          console.log(JSON.stringify(user))

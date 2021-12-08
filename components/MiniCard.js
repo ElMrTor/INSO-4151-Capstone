@@ -47,43 +47,43 @@ var  DAT = null
 
 const DATA = [
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: './../assets/819XYUimTuL._AC_SL1500_.png',
         raffle_current: 0,
         raffle_total: 100,
         raffle_price: 10,
     },
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: './../assets/819XYUimTuL._AC_SL1500_.png',
         raffle_current: 0,
         raffle_total: 10,
         raffle_price: 10,
     },
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: './../assets/819XYUimTuL._AC_SL1500_.png',
         raffle_current: 20,
         raffle_total: 10,
         raffle_price: 10,
     },
      {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: './../assets/819XYUimTuL._AC_SL1500_.png',
         raffle_current: 9,
         raffle_total: 10,
         raffle_price: 10,
     },
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: './../assets/819XYUimTuL._AC_SL1500_.png',
         raffle_current: 9,
         raffle_total: 10,
         raffle_price: 10,
     },  
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: './../assets/819XYUimTuL._AC_SL1500_.png',
         raffle_current: 9,
         raffle_total: 10,
         raffle_price: 10,
     },
     {
-        feed_image: './../assets/imagePlaystation.png',
+        feed_image: './../assets/819XYUimTuL._AC_SL1500_.png',
         raffle_current: 9,
         raffle_total: 10,
         raffle_price: 10,
@@ -138,11 +138,11 @@ export default class MiniCard extends Component {
     }
     
     render () {   
-        this.getData()             
+        // this.getData()             
         return (
 
     <FlatList             
-            data={this.getData()}                        
+            data={DATA}                        
             numColumns={2}
             nestedScrollEnabled={false}
             renderItem={({ item, index }) => <Item user_name={item.user_name}

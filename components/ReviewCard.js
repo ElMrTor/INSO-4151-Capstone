@@ -5,27 +5,27 @@ import { NavigationContainer } from '@react-navigation/native';
 
 const DATA = [
     {
-        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'My neighbor Georgie has one of these. She works as a busboy and she says it looks brown.',
         score: 4.9
     },
     {
-        review_description: 'Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'It only works when I\'m Cook Islands.',
         score: 5.0
     },
     {
-        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'My neighbor Elisha has one of these. She works as a fortune teller and she says it looks floppy.',
         score: 4.5
     },
     {
-        review_description: 'Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'I tried to decapitate it but got coconut all over it.',
         score: 4.0
     },
     {
-        review_description: 'Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'The box this comes in is 5 light-year by 6 foot and weights 17 megaton!!!',
         score: 5.0
     },
     {
-        review_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet metus lorem. Suspendisse tristique mauris sit amet interdum volutpat.',
+        review_description: 'I tried to maim it but got nectarine all over it.',
         score: 4.2
     },
 ]
