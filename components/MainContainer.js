@@ -20,11 +20,10 @@ import SingleRaffleScreen from '../screens/SingleRaffleScreen';
 import BalanceButtons from '../screens/BalanceButtons';
 import ProfileScreenAsUser from '../screens/ProfileScreenAsUser';
 
-
 // Components
 import ProfileHeader from './ProfileHeader';
-import ProfileAsUser from './ProfileAsUser';
 import HomeHeader from './HomeHeader';
+import ProfileAsUser from './ProfileAsUser';
 
 
 //Screen names
@@ -40,11 +39,10 @@ const addReview = "AddReview";
 const raffles = "MyRaffles";
 const singleRaffle = "SingleRaffle";
 const balanceButtonsName = "BalanceButtons";
-
+const addReviewName = "AddReview";
 
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
-
 
 
 function HomeStackScreen() {
@@ -53,7 +51,7 @@ function HomeStackScreen() {
       <ProfileStack.Screen name={"homeName"} component={TheHome} options={{  headerTitle: () => <HomeHeader/> }}/>
       <ProfileStack.Screen name={"profileNameUser"} component={ProfileScreenAsUser} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
       <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null }}/>
-      <ProfileStack.Screen name={balanceButtonsName} component={BalanceButtons} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={addReviewName} component={AddReview} options={{ headerShown: false }}/>
     </ProfileStack.Navigator>
   )
 }
@@ -64,7 +62,7 @@ function ExploreStackScreen() {
       <ProfileStack.Screen name={"exploreName"} component={Explore} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={"profileName"} component={ProfileScreenAsUser} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
       <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
-      <ProfileStack.Screen name={balanceButtonsName} component={BalanceButtons} options={{ headerShown: false }}/>
+      <ProfileStack.Screen name={addReviewName} component={AddReview} options={{ headerShown: false }}/>
     </ProfileStack.Navigator>
   )
 }
@@ -75,6 +73,7 @@ function ProfileStackScreen() {
       <ProfileStack.Screen name={"profileName"} component={TheUserProfile} options={{
         headerTitle: () => <ProfileHeader/>
       }}/>
+      <ProfileStack.Screen name={addReviewName} component={AddReview} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={profileSettingsName} component={ProfileSettings} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={raffles} component={MyRaffles} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={bugName} component={ReportBug} options={{ headerShown: false }}/>

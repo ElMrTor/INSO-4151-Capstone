@@ -11,12 +11,27 @@ import { useNavigation } from '@react-navigation/native';
 export default function ProfileHeader() {
     const navigation = useNavigation(); 
 
-  
+
+    const pressHandlerAddReview = () => {
+       navigation.navigate('AddReview');
+    }
   
   return (
   
     <View style={styles.container}>
-        <Text style={styles.title}>username</Text>
+        <TouchableOpacity
+            onPress={pressHandlerAddReview}
+            style={{
+                width:100,
+                height:30,
+                alignItems:"center",
+                justifyContent:"center",
+                borderRadius:10,
+                backgroundColor: "#DA772C"
+                }}
+            >
+                <Text style={{fontWeight: 'bold', color: '#fff'}}> Add Review </Text>
+        </TouchableOpacity>
         <View style={{flexDirection: 'row'}}>
             <TouchableOpacity onPress={() => navigation.navigate('ProfileSettings')}>            
             <Ionicons name="menu" size={30} color="black" />

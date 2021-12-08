@@ -9,7 +9,7 @@ export default function ProfileAsUser() {
         <Text style={styles.title}>username</Text>
         <View style={{flexDirection: 'row'}}>
         </View>
-        
+
     </View>
   
   )     
