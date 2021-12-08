@@ -5,9 +5,9 @@ from users.users_manager import UserManager
 from raffle_stats.raffle_stats_manager import RaffleStatManager
 from raffles.raffles_manager import RaffleManager
 from utils import OK, BAD_REQUEST, NOT_FOUND, CREATED, GET, POST, PUT, DELETE
+import paypalrestsdk
 
 app = Flask(__name__)
-
 
 def generic_error():
     return jsonify(Error='Incorrect request received.'), BAD_REQUEST
@@ -88,6 +88,59 @@ def reviews_by_id(review_id):
         return ReviewManager().delete(review_id)
     else:
         return generic_error()
+
+paypalrestsdk.configure({
+  "mode": "sandbox", # sandbox or live
+  "client_id": "AQ1jJBdKSdb71eUxM0SecJPI2iYxlyzRTir9poOfUYqy9y4524DnAc49pkcKrHIx2N6MBXshRU4iu8kq",
+  "client_secret": "EJjnn70mGc8KlDMcfqc7G11IxYoZUwWK6R9lZTFyhxqr8G3aG2X4phVSr1lGkrLNA53GKt_HCAv6givG" })
+
+@app.route('/paypal')
+def index():
+    return render_template("index.html")
+
+@app.route('/payment', methods=['POST'])
+def payment():
+
+    payment = paypalrestsdk.Payment({
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"},
+        "redirect_urls": {
+            "return_url": "http://localhost:3000/payment/execute",
+            "cancel_url": "http://localhost:3000/"},
+        "transactions": [{
+            "item_list": {
+                "items": [{
+                    "name": "testitem",
+                    "sku": "12345",
+                    "price": "1.00",
+                    "currency": "USD",
+                    "quantity": 1}]},
+            "amount": {
+                "total": "1.00",
+                "currency": "USD"},
+            "description": "This is the payment transaction description."}]})
+
+    if payment.create():
+        print('Payment success!')
+    else:
+        print(payment.error)
+
+    return jsonify({'paymentID' : payment.id})
+
+@app.route('/execute', methods=['POST'])
+def execute():
+    success = False
+
+    payment = paypalrestsdk.Payment.find(request.form['paymentID'])
+
+    if payment.execute({'payer_id' : request.form['payerID']}):
+        print('Execute success!')
+        success = True
+    else:
+        print(payment.error)
+
+    return jsonify({'success' : success})
     
 if __name__ == "__main__":
     app.run(debug=True)
