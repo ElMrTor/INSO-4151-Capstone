@@ -6,8 +6,11 @@ from flask import jsonify
 
 class RaffleManager:
 
+    def get_all_json(self):
+        return jsonify(Raffle=[vars(Raffle(*raffs)) for raffs in RaffleDAO().get_all()]), OK
+
     def get_all(self):
-        return jsonify(Raffle=[vars(Raffle(*raffs)) for raffs in RaffleDAO.get_all()]), OK
+        return [vars(Raffle(*raffs)) for raffs in RaffleDAO().get_all()]
 
     def get(self, raffle_id):
         data = RaffleDAO().get(raffle_id)

@@ -1,5 +1,6 @@
 from psycopg2 import connect
 from utils import connect_db
+from datetime import datetime
 
 class RaffleDAO:
 
@@ -26,9 +27,18 @@ class RaffleDAO:
         return value
 
     def add(self, data_tuple):        
-        cursor = self.connection.cursor()        
-        query = 'insert into "Raffle"(name, photo, description, ticket_value, is_active, raffle_state, start_date, end_date, remaining_tickets, total_tickets) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) returning raffle_id'
-        cursor.execute(query, data_tuple)
+        data_tuple = tuple(data_tuple.values())
+        try:
+            cursor = self.connection.cursor()
+            query = 'insert into "Raffle"(name, photo, description, ticket_value, is_active, raffle_state, start_date, end_date, remaining_tickets, total_tickets, owner_id) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) returning raffle_id'
+            cursor.execute(query, data_tuple)
+        except:
+            cursor.close()
+            self.connection.close()
+            self.connection = connect_db() 
+            cursor = self.connection.cursor()            
+            query = 'insert into "Raffle"(name, photo, description, ticket_value, is_active, raffle_state, start_date, end_date, total_tickets, remaining_tickets, owner_id) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) returning raffle_id'
+            cursor.execute(query, data_tuple)
         value = cursor.fetchone()
         self.connection.commit()
         cursor.close()

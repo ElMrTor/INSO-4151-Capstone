@@ -7,7 +7,15 @@ from utils import OK, ACCEPTED, BAD_REQUEST, CREATED, NOT_FOUND, NOT_ACCEPTABLE,
 class UserManager:
 
     def validate_user(self, username, password):        
-        data = UserDAO().get_by_attribute('username', username)
+        print(self.validate_user_attr('username', username, password))
+        return self.validate_user_attr('username', username, password)        
+
+    def validate_by_email(self, email, password):
+        print(self.validate_user_attr('email', email, password))
+        return self.validate_user_attr('email', email, password)
+
+    def validate_user_attr(self, str_val, attr_val, password):
+        data = UserDAO().get_by_attribute(str_val, attr_val)
         if data:
             user = User(*data)
             if user.password == password:
@@ -53,7 +61,7 @@ class UserManager:
     def add(self, user_info_tuple):
         info = UserDAO().add(user_info_tuple)
         if info:
-            return jsonify(UserIndex=info), CREATED
+            return jsonify(UserIndex=info), OK
         else:
             return jsonify(Error='Failed to create User'), BAD_REQUEST
 
@@ -69,6 +77,7 @@ class UserManager:
                 return jsonify(Error='Email already exists.'), NOT_ACCEPTABLE
             else:
                 return self.add(tuple(user_info_dict.values()))
-        except Exception as e:            
+        except Exception as e:         
+            print(e)   
             return jsonify(Error='Error ocurred during registration of user.'), SERVICE_UNAVAILABLE
 

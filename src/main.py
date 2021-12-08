@@ -1,7 +1,8 @@
 from flask import Flask, jsonify, request, url_for, redirect, send_file
 from flask.helpers import flash
 from flask.wrappers import Response
-from flask_login import login_manager, login_required, login_user, logout_user, current_user
+from flask_login import login_manager, login_required, login_user, logout_user, current_user, fresh_login_required
+
 
 
 from reviews.reviews_manager import ReviewManager
@@ -10,12 +11,15 @@ from users.users_DAO import UserDAO
 from users.users_manager import UserManager
 from raffle_stats.raffle_stats_manager import RaffleStatManager
 from raffles.raffles_manager import RaffleManager
+from raffles.raffles import Raffle
+from raffles.raffles_manager import RaffleManager
 from utils import NOT_ACCEPTABLE, OK, BAD_REQUEST, NOT_FOUND, CREATED, GET, POST, PUT, DELETE
 
 
 app = Flask(__name__)
-app.config.update(DEBUG=True)
+
 login_manager = login_manager.LoginManager()
+
 app.secret_key = '2a8af9e0568b6a0ab3ae31a28cbea1208ec1a91bb5ded3cc2d535f9b861f7593'
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -34,11 +38,14 @@ def load_user(user_id):
 @app.route('/home', methods=[GET])
 @login_required
 def home():    
-    return Response(f'Logged in as {current_user.username}')
+    return jsonify(LoggedIn=f'Logged in as {current_user.username}'), OK
 
 @app.route('/users', methods=[GET])
+@login_required
+# @fresh_login_required
 def users():
-    return UserManager().get_all()
+    print(f'User id is: {current_user.user_id}')
+    return jsonify(owner_id=current_user.user_id), OK
 
 @app.route('/users/<int:user_id>', methods=[GET])
 @login_required
@@ -46,26 +53,31 @@ def get_user(user_id):
     return UserManager().get(user_id)
 
 @app.route('/user/register', methods=[POST])
+@login_required
 def registerUser():
     return UserManager().register_user(request.json)
+
+@app.route('/testing', methods=[GET])
+def test_route():
+    return Response('Server received request.')
 
 @app.route('/login', methods=[POST, GET])
 def login():
     if request.method == POST:                
-        user_n = request.form['username']
-        user_p = request.form['password']
-        user = UserManager().validate_user(user_n, user_p)
+        user_n = request.json['email']
+        user_p = request.json['password']
+        user = UserManager().validate_by_email(user_n, user_p)
         if user:            
             if current_user.is_authenticated:
-                return Response('User already logged in.')
+                return jsonify(LoggedIn='User already logged in.'), OK
             login_user(user)                      
             flash(f'Logged in successfully.')            
             return redirect(request.args.get('next') or url_for('home'))                    
         else:
             flash('Could not log in.')
-            return 'Could not log in.', NOT_ACCEPTABLE
+            return jsonify(Error='Could not log in.'), NOT_ACCEPTABLE
     elif request.method == GET:              
-        return Response('User needs to be logged in before performing that action.')
+        return jsonify(Error='User needs to be logged in before performing that action.'), OK
 
 @app.route('/logout', methods=[GET])
 def logout():    
@@ -79,7 +91,7 @@ def raffle_stats():
     if request.method == GET:
         return RaffleStatManager().get_all()
     elif request.method == POST:
-        return RaffleStatManager().add(tuple(request.json.values()))
+        return RaffleStatManager().add(request.json)
     else:
         return generic_error()
 
@@ -101,7 +113,7 @@ def raffles():
     if request.method == GET:
         return RaffleManager().get_all()
     elif request.method == POST:
-        return RaffleManager().add(tuple(request.json.values()))
+        return RaffleManager().add(request.json)
     else:
         return generic_error()
 
@@ -138,6 +150,33 @@ def reviews_by_id(review_id):
         return ReviewManager().delete(review_id)
     else:
         return generic_error()
+
+@app.route('/raffles/active', methods=[GET])
+# @login_required
+def get_all_active_raffles():
+    raffles = RaffleManager().get_all()
+    active_raffles = []    
+    for raf in raffles:
+        raf: Raffle
+        if raf['is_active']:
+            # new_r = {
+            #     'feed_image' : './../assets/imagePlaystation.png',
+            #     'user_name' : 'pancho',
+            #     'feed_description' : 'IDK',
+            #     'raffle_total' : 122,
+            #     'raffle_current' : 888,
+            #     'user_image' : None,                
+            # }
+            raf['feed_image'] = './../assets/imagePlaystation.png'
+            raf['user_name'] = 'pancho'
+            raf['feed_description'] = raf['description']
+            raf['raffle_total'] = raf['total_tickets']
+            raf['raffle_current'] = raf['total_tickets'] - raf['remaining_tickets']
+            
+            active_raffles.append(raf)
+            
+    return jsonify(Raffles=active_raffles), OK
+
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True, port='5000')

@@ -1,4 +1,5 @@
 from psycopg2 import connect
+from sqlalchemy import create_engine
 
 'Rest Methods'
 GET = 'GET'
@@ -15,12 +16,17 @@ BAD_REQUEST = 400
 NOT_ACCEPTABLE = 406
 SERVICE_UNAVAILABLE = 503
 
+ENGINE_CONFIG = 'postgresql+psycopg2://postgres:inso@localhost/Capstone_Inso'
+ISOLATION = { 'isolation_level' : 'AUTOCOMMIT' }
+
 DATABASE_CONFIG = {
     'host' : 'localhost',
     'user' : 'postgres',
     'password' : 'inso',
     'database' : 'Capstone_Inso'
 }
+
+db_engine = create_engine(ENGINE_CONFIG, execution_options=ISOLATION)
 
 def connect_db():
     global DATABASE_CONFIG
@@ -34,3 +40,5 @@ def connect_db():
         print(f'Connection to the database failed with error {e}')
     return connection
 
+def get_db_engine():
+    return db_engine
