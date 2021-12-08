@@ -24,6 +24,7 @@ import ProfileScreenAsUser from '../screens/ProfileScreenAsUser';
 import ProfileHeader from './ProfileHeader';
 import HomeHeader from './HomeHeader';
 import ProfileAsUser from './ProfileAsUser';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 //Screen names
@@ -58,7 +59,7 @@ function HomeStackScreen() {
 
 function ExploreStackScreen() {
   return(
-    <ProfileStack.Navigator>
+    <ProfileStack.Navigator>    
       <ProfileStack.Screen name={"exploreName"} component={Explore} options={{ headerShown: false }}/>
       <ProfileStack.Screen name={"profileName"} component={ProfileScreenAsUser} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
       <ProfileStack.Screen name={singleRaffle} component={SingleRaffleScreen} options={{  headerTitle: () => <HomeHeader/>, headerLeft: null  }}/>
@@ -85,8 +86,9 @@ function ProfileStackScreen() {
 
 function MainContainer() {
   return (
-
+    
     <NavigationContainer>
+    
       <Tab.Navigator
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
@@ -94,12 +96,13 @@ function MainContainer() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             let rn = route.name;
-
+            
             if (rn === homeName) {
               iconName = focused ? 'home-sharp' : 'home-outline';
 
             } else if (rn === exploreName) {
               iconName = focused ? 'compass' : 'compass-outline';
+              
 
             }  else if (rn === addRaffleName) {
               iconName = focused ? 'add-circle' : 'add-circle-outline';
@@ -111,11 +114,10 @@ function MainContainer() {
 
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
-          },
-
+          },          
           tabBarActiveTintColor: "orange",
           tabBarInactiveTintColor: "grey",
-          tabBarShowLabel: false,
+          tabBarShowLabel: false,          
         })}
    
         >
@@ -127,7 +129,10 @@ function MainContainer() {
 
       </Tab.Navigator>
     </NavigationContainer>
+    
   );
 }
+
+
 
 export default MainContainer;

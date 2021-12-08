@@ -7,6 +7,7 @@ import MiniCard from '../components/MiniCard';
 
 
 
+
 export default function Explore() {
     const [search, setSearch] = useState('');
 

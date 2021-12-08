@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, ToastAndroid, Platform } from 'react-native';
 import ImagePicker from '../components/ImagePicker';
 
 export default class AddRaffle extends Component{
@@ -14,9 +12,11 @@ export default class AddRaffle extends Component{
           raffleQty: "",
           raffleDescription: "",
           raffleDuration: "",
+          owner_id : ""
         }
       }
 
+      
      addNewRaffle = () => {
        var raffle = {
             raffleTitle: this.state.raffleTitle,
@@ -26,16 +26,53 @@ export default class AddRaffle extends Component{
             raffleDuration: this.state.raffleDuration,
        };
 
-       console.log(JSON.stringify(raffle))
-
-//        fetch("http://localhost:3000/send-data", {
-//              method: "post",
-//              headers: {
-//                "Content-Type": "application/json",
-//              },
-//              body: JSON.stringify(raffle),
-//            })
-        }
+       
+       fetch(serverlink + '/users')
+        .then (user_response => {                    
+          if (user_response.ok) {
+            return user_response.json()
+          }
+        })       
+        .then(user_dict => {              
+            var raffle_req = {
+              name : this.state.raffleTitle,
+              photo : null,
+              description : this.state.raffleDescription,
+              ticket_value : this.state.rafflePrice,
+              is_active : true,
+              raffle_state : 0,
+              start_date : new Date().toISOString(),
+              end_date : new Date().toISOString(),
+              total_tickets : this.state.raffleQty,
+              remaining_tickets : this.state.raffleQty,              
+            }
+            this.state.owner_id = user_dict['owner_id']
+            return raffle_req
+          })
+        .then (new_raffle => {
+          new_raffle['owner_id'] = this.state.owner_id
+          console.log(new_raffle)
+          return fetch(serverlink + '/raffles', {
+            method : 'post',
+            headers : {
+              'Content-Type' : 'application/json',
+            },
+            body : JSON.stringify(new_raffle)
+          })
+        })
+        .then (response => {          
+          var stat = response.status          
+          if (stat == 201) {
+            if (Platform.OS == 'android')
+              ToastAndroid.show('Created raffle.', ToastAndroid.SHORT)
+          }
+          else {
+            if (Platform.OS == 'android')
+              ToastAndroid.show('Failed to create raffle.', ToastAndroid.SHORT)
+          }
+        
+        })         
+      }
 
     render() {
         return (

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, ToastAndroid } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 export default class SignUp extends Component{
@@ -25,8 +25,42 @@ export default class SignUp extends Component{
             confirmPassword: this.state.confirmPassword,
        };
 
-       console.log(JSON.stringify(user))
-       this.props.navigation.navigate('MainContainer');
+       if (user.confirmPassword != user.password) {
+         ToastAndroid.show("Passwords do not match.", ToastAndroid.SHORT)
+       }
+       else {
+         var user = {
+          stat_id : -1,
+          photo : null,
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password,
+          verified : false,          
+          total_raffle_participation : 0,
+          priviledges : 0,
+          username: this.state.username,          
+         }
+         
+         console.log(JSON.stringify(user))
+        fetch("http://192.168.42.22:5000/user/register", {
+          method : "post",
+          headers : {
+            "Content-Type" : "application/json"
+          },          
+          body : JSON.stringify(user)
+        })
+          .then (response => {
+            if (response.ok) {
+              ToastAndroid.show("Successfully registered user.", ToastAndroid.SHORT)
+              this.props.navigation.navigate('MainContainer')
+            }
+          })
+        
+       }
+       
+
+       
+       
 //        fetch("http://localhost:3000/send-data", {
 //             method: "post",
 //             headers: {

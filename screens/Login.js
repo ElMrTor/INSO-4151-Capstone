@@ -1,6 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity, Image, TextInput, ToastAndroid } from 'react-native';
+
+const { Req } = NativeModules
+
+
 
 export default class Login extends Component {
     constructor(props) {
@@ -11,21 +14,34 @@ export default class Login extends Component {
          password: "",
        }
      }
-
-     loginUser = () => {
+     loginUser = () => {      
         var user = {
              email: this.state.email,
              password: this.state.password,
+            // email : "huelga@upr.edu",
+            // password : "PC1003"
         };
+        var user_json = JSON.stringify(user)
         console.log(JSON.stringify(user))
-        this.props.navigation.navigate('MainContainer');
-//        fetch("http://localhost:3000/send-data", {
-//             method: "post",
-//             headers: {
-//               "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify(user),
-//           })
+        fetch(serverlink + "/login", {
+          method: "post",
+          // credentials : "omit",
+          headers: {
+            "Accept" : "application/json",
+            "Content-Type": "application/json",            
+          },
+          body: user_json
+        })
+          .then (response => {
+            if (response.ok) {
+              this.props.navigation.navigate('MainContainer');
+            }
+            else {
+             if (Platform.OS == "android") {
+              ToastAndroid.show("Error ocurred logging in.", ToastAndroid.SHORT);
+             }
+            }
+          })          
     }
 
   render() {

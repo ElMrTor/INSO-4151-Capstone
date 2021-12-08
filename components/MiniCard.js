@@ -1,9 +1,48 @@
-import React, { useState, Component } from 'react';
+import React, { useState, Component, useEffect } from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, Button, TouchableOpacity, FlatList, SafeAreaView, VirtualizedList} from 'react-native';
-import {FontAwesome} from '@expo/vector-icons';
-import { Constants } from 'expo';
 import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 
+
+
+var  DAT = null
+
+// console.log(DAT)
+
+
+// async function getData() {
+//     await fetch('http://192.168.42.22:5000/raffles/active')
+//     .then(response => {
+//         if ( response.ok ) {
+//             return response.json()
+//         }
+//     })
+//     .then(data => {        
+//         DAT = data
+//         // console.log(data)
+//         return data
+//     })
+// }
+
+// getData()
+// function getData() {
+//     useFocusEffect(
+//         React.useCallback(() => {
+//             fetch('http://192.168.42.22:5000/raffles/active')
+//                 .then(response => {
+//                     if ( response.ok) {
+//                         return response.json()
+//                     }
+//                 })
+//                 .then(data => {
+//                     console.log(data)
+//                     DAT = data
+//                     return data
+//                 })
+//         }, [])
+//     )
+//     return <View />
+// }
 
 
 const DATA = [
@@ -83,10 +122,27 @@ function Item({feed_image, raffle_current, raffle_total, raffle_price})
     )
 }
 
-function MiniCard() {
-    return (
-    <FlatList
-            data={DATA}
+export default class MiniCard extends Component {   
+    async getData() {
+        fetch('http://192.168.42.22:5000/raffles/active')
+        .then(response => {
+            if ( response.ok ) {
+                return response.json()
+            }
+        })
+        .then(data => {        
+            DAT = data
+            console.log(data['Raffles'])
+            return data['Raffles']
+        })
+    }
+    
+    render () {   
+        this.getData()             
+        return (
+
+    <FlatList             
+            data={this.getData()}                        
             numColumns={2}
             nestedScrollEnabled={false}
             renderItem={({ item, index }) => <Item user_name={item.user_name}
@@ -99,8 +155,8 @@ function MiniCard() {
             keyExtractor={(item, index) => {
                 return index.toString();
             }}
-        /> 
- );
+        />
+        )}
 };
 
 const styles = StyleSheet.create({
@@ -163,5 +219,5 @@ const styles = StyleSheet.create({
 
 });
 
-export default MiniCard;
+
 

@@ -1,55 +1,117 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 
-export default function AddReview({ navigation }){
-    return (
-        <View style={styles.container}>
-          <Image
-            style={{width:120, height:120, marginBottom:10}}
-            source={require('./../assets/login.png')}
+export default class AddReview extends Component{
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      title : '',
+      review_score : '',
+      description : ''
+    }
+  }
+
+  addReview() {
+
+  }
+
+  render() {
+    return(
+      <View style={styles.container}>
+        <Image
+          style={{width:120, height:120, marginBottom:10}}
+          source={require('./../assets/login.png')}
+        />
+
+        <Text style={{fontWeight:'bold', color:'black', fontSize:36, marginBottom: 10}}> Add a Review </Text>
+
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Title"
+            placeholderTextColor="#9A9A9A"
+
           />
+        </View>
 
-          <Text style={{fontWeight:'bold', color:'black', fontSize:36, marginBottom: 10}}> Add a Review </Text>
-
-          <View style={styles.inputView}>
+        <View style={styles.inputView}>
             <TextInput
               style={styles.textInput}
-              placeholder="Title"
+              placeholder="Rate on a scale of 1 to 5"
               placeholderTextColor="#9A9A9A"
 
             />
-          </View>
-
-          <View style={styles.inputView}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Rate on a scale of 1 to 5"
-                placeholderTextColor="#9A9A9A"
-
-              />
-          </View>
-
-          <View style={styles.descriptionView}>
-              <TextInput
-                style={styles.descriptionInput}
-                placeholder="Review"
-                placeholderTextColor="#9A9A9A"
-
-              />
-           </View>
-
-          <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => Alert.alert('Simple Button pressed')}
-                  >
-            <Text style={{color:"white",fontWeight: "bold",fontSize:20}}> SUBMIT </Text>
-          </TouchableOpacity>
-
         </View>
-      );
+
+        <View style={styles.descriptionView}>
+            <TextInput
+              style={styles.descriptionInput}
+              placeholder="Review"
+              placeholderTextColor="#9A9A9A"
+
+            />
+         </View>
+
+        <TouchableOpacity
+                style={styles.button}
+                onPress={() => Alert.alert('Simple Button pressed')}
+                >
+          <Text style={{color:"white",fontWeight: "bold",fontSize:20}}> SUBMIT </Text>
+        </TouchableOpacity>
+
+      </View>
+    )};
 }
+
+
+// export default function AddReview({ navigation }){
+//     return (
+//         <View style={styles.container}>
+//           <Image
+//             style={{width:120, height:120, marginBottom:10}}
+//             source={require('./../assets/login.png')}
+//           />
+
+//           <Text style={{fontWeight:'bold', color:'black', fontSize:36, marginBottom: 10}}> Add a Review </Text>
+
+//           <View style={styles.inputView}>
+//             <TextInput
+//               style={styles.textInput}
+//               placeholder="Title"
+//               placeholderTextColor="#9A9A9A"
+
+//             />
+//           </View>
+
+//           <View style={styles.inputView}>
+//               <TextInput
+//                 style={styles.textInput}
+//                 placeholder="Rate on a scale of 1 to 5"
+//                 placeholderTextColor="#9A9A9A"
+
+//               />
+//           </View>
+
+//           <View style={styles.descriptionView}>
+//               <TextInput
+//                 style={styles.descriptionInput}
+//                 placeholder="Review"
+//                 placeholderTextColor="#9A9A9A"
+
+//               />
+//            </View>
+
+//           <TouchableOpacity
+//                   style={styles.button}
+//                   onPress={() => Alert.alert('Simple Button pressed')}
+//                   >
+//             <Text style={{color:"white",fontWeight: "bold",fontSize:20}}> SUBMIT </Text>
+//           </TouchableOpacity>
+
+//         </View>
+//       );
+// }
 
 const styles = StyleSheet.create({
   container: {
