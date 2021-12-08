@@ -108,7 +108,7 @@ def raffle_stats_by_id(raffle_stat_id):
         return generic_error()
 
 @app.route('/raffles', methods=[GET, POST])
-@login_required
+# @login_required
 def raffles():
     if request.method == GET:
         return RaffleManager().get_all()

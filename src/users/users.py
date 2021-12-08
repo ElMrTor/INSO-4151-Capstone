@@ -6,7 +6,7 @@ class User(UserMixin):
     def __init__(self, user_id, stat_id,
                 name, email,
                 password, verified, total_raffle_participation,
-                priviledges, username, photo=None):
+                priviledges, username, balance, photo=None):
         self.user_id = user_id
         self.id = self.user_id
         self.stat_it = stat_id
@@ -21,3 +21,4 @@ class User(UserMixin):
         self.total_raffle_participation = total_raffle_participation
         self.priviledges = priviledges
         self.username = username
+        self.balance = balance

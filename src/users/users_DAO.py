@@ -8,7 +8,7 @@ class UserDAO:
 
     def get_all(self):
         cursor = self.connection.cursor()
-        query = 'select user_id, stat_id, name, email, password, verified, total_raffle_participation, priviledges, username from "Capstone_Inso".public."User"'
+        query = 'select user_id, stat_id, name, email, password, verified, total_raffle_participation, priviledges, username, balance from "Capstone_Inso".public."User"'
         cursor.execute(query)
         values = cursor.fetchall()
         cursor.close()
@@ -17,7 +17,7 @@ class UserDAO:
 
     def get_by_attribute(self, attr_name, attr_val):
         cursor = self.connection.cursor()        
-        get_query = SQL('SELECT user_id, stat_id, name, email, password, verified, total_raffle_participation, priviledges, username FROM "Capstone_Inso".public."User" WHERE {}=%s').format(Identifier(attr_name))
+        get_query = SQL('SELECT user_id, stat_id, name, email, password, verified, total_raffle_participation, priviledges, username, balance FROM "Capstone_Inso".public."User" WHERE {}=%s').format(Identifier(attr_name))
         value = None
         cursor.execute(get_query, (attr_val, ))
         value = cursor.fetchone()
@@ -33,7 +33,7 @@ class UserDAO:
     
     def add(self, value_tuple):
         cursor = self.connection.cursor()        
-        query = 'insert into "Capstone_Inso".public."User"(stat_id, photo, name, email, password, verified, total_raffle_participation, priviledges, username) values(%s, %s, %s, %s, %s, %s, %s, %s, %s) returning user_id'
+        query = 'insert into "Capstone_Inso".public."User"(stat_id, photo, name, email, password, verified, total_raffle_participation, priviledges, username, balance) values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) returning user_id'
         cursor.execute(query, value_tuple)
         value = cursor.fetchone()
         self.connection.commit()
